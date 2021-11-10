@@ -6,17 +6,17 @@
     <group android:checkableBehavior="single">
         <!-- add menu items.icon and title are attributes. -->
         <item
-            android:id="@+id/nav_message"
-            android:icon="@drawable/ic_message"
-            android:title="Message" />
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/ana_sayfa" />
         <item
-            android:id="@+id/nav_chat"
-            android:icon="@drawable/ic_chat"
-            android:title="Chat" />
+            android:id="@+id/nav_form_list_screen"
+            android:icon="@drawable/ic_list"
+            android:title="@string/form_listesi_ekrani" />
         <item
-            android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_profile"
-            android:title="Profile" />
+            android:id="@+id/nav_form_screen"
+            android:icon="@drawable/ic_phone"
+            android:title="@string/form_ekrani" />
 
     </group>
 

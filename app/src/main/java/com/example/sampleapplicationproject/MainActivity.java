@@ -9,7 +9,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -46,25 +45,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new
-                    FragmentMessage()).commit();
-            navigationView.setCheckedItem(R.id.nav_message);
+                    FragmentHome()).commit();
+            navigationView.setCheckedItem(R.id.nav_home);
         }
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.nav_message:
+            case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new
-                        FragmentMessage()).commit();
+                        FragmentHome()).commit();
                 break;
-            case R.id.nav_chat:
+            case R.id.nav_form_list_screen:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new
-                        FragmentChat()).commit();
+                        FragmentFormListScreen()).commit();
                 break;
-            case R.id.nav_profile:
+            case R.id.nav_form_screen:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new
-                        FragmentProfile()).commit();
+                        FragmentFormScreen()).commit();
                 break;
         }
 
