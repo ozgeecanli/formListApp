@@ -56,14 +56,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new
                         FragmentHome()).commit();
+                toolbar.setTitle("Ana Sayfa");
                 break;
             case R.id.nav_form_list_screen:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new
                         FragmentFormListScreen()).commit();
+                toolbar.setTitle("Form Listesi Ekranı");
                 break;
             case R.id.nav_form_screen:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new
                         FragmentFormScreen()).commit();
+                toolbar.setTitle("Form Ekranı");
                 break;
         }
 
