@@ -6,52 +6,35 @@
     android:background="#FFFFFF"
     tools:context=".FragmentHome">
 
-    <!--edit text for adding course name-->
+    <!--edit text for adding name-->
     <EditText
-        android:id="@+id/idEdtCourseName"
+        android:id="@+id/editTextFormName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/idBtnSave"
-        android:layout_toLeftOf="@id/idBtnSave"
-        android:hint="Enter course Name" />
+        android:hint="@string/adinizi_giriniz" />
 
-    <!--edit text for adding course description-->
+    <!--edit text for adding surname-->
     <EditText
-        android:id="@+id/idEdtCourseDescription"
+        android:id="@+id/editTextFormSurname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/idEdtCourseName"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_toLeftOf="@id/idBtnAdd"
-        android:hint="Enter Course Description" />
+        android:layout_below="@id/editTextFormName"
+        android:hint="@string/soyadinizi_giriniz" />
 
-    <!--button for adding data to recycler view-->
+    <!--button for adding and saving data to recycler view-->
     <Button
-        android:id="@+id/idBtnAdd"
+        android:id="@+id/buttonFormSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/idEdtCourseName"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_below="@id/editTextFormSurname"
         android:layout_margin="10dp"
-        android:text="Add " />
-
-    <!--button for saving data to shared prefs-->
-    <Button
-        android:id="@+id/idBtnSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
-        android:text="Save " />
+        android:text="@string/kaydet" />
 
     <!--recycler view to display our data-->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/idRVCourses"
+        android:id="@+id/recyclerViewNameSurname"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/idEdtCourseDescription" />
+        android:layout_below="@+id/buttonFormSave" />
 
 </RelativeLayout>

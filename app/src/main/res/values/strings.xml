@@ -9,4 +9,7 @@
     <string name="ornek_uygulama_projesi">Örnek Uygulama Projesi</string>
     <string name="form_ekrani">Form Ekranı</string>
     <string name="form_listesi_ekrani">Form Listesi Ekranı</string>
+    <string name="adinizi_giriniz">Adınızı Giriniz</string>
+    <string name="soyadinizi_giriniz">Soyadınızı Giriniz</string>
+    <string name="kaydet">Kaydet</string>
 </resources>
