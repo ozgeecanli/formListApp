@@ -8,47 +8,77 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-    <!--edit text for adding name-->
-    <EditText
-        android:id="@+id/editTextFormName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/adinizi_giriniz" />
+        <!--edit text for adding name-->
+        <EditText
+            android:id="@+id/editTextFormName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/unit8dp"
+            android:layout_marginTop="@dimen/unit8dp"
+            android:hint="@string/adinizi_giriniz" />
 
-    <!--edit text for adding surname-->
-    <EditText
-        android:id="@+id/editTextFormSurname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextFormName"
-        android:hint="@string/soyadinizi_giriniz" />
+        <!--edit text for adding surname-->
+        <EditText
+            android:id="@+id/editTextFormSurname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextFormName"
+            android:layout_marginStart="@dimen/unit8dp"
+            android:layout_marginTop="@dimen/unit8dp"
+            android:hint="@string/soyadinizi_giriniz" />
 
-    <!--button for adding data to recycler view-->
-    <Button
-        android:id="@+id/buttonFormAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextFormSurname"
-        android:layout_margin="10dp"
-        android:text="@string/ekle" />
+        <!--button for pick a birthday-->
+        <Button
+            android:id="@+id/buttonBirthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextFormSurname"
+            android:layout_marginStart="@dimen/unit8dp"
+            android:layout_marginTop="@dimen/unit8dp"
+            android:text="@string/dogum_gunu_tarihinizi_seciniz" />
 
-    <!--button for saving data to recycler view-->
-    <Button
-        android:id="@+id/buttonFormSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/buttonFormAdd"
-        android:layout_margin="10dp"
-        android:text="@string/kaydet" />
+        <!--text view for show birthday-->
+        <TextView
+            android:id="@+id/textViewBirthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buttonBirthday"
+            android:layout_marginStart="@dimen/unit8dp"
+            android:layout_marginTop="@dimen/unit8dp"
+            android:hint="@string/dogum_gunu_tarihiniz"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
-    <!--recycler view to display our data-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewNameSurname"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/buttonFormSave" />
+        <!--button for adding data to recycler view-->
+        <Button
+            android:id="@+id/buttonFormAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textViewBirthday"
+            android:layout_marginStart="@dimen/unit8dp"
+            android:layout_marginTop="@dimen/unit8dp"
+            android:text="@string/ekle" />
+
+        <!--button for saving data to recycler view-->
+        <Button
+            android:id="@+id/buttonFormSave"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/buttonFormAdd"
+            android:layout_marginStart="@dimen/unit8dp"
+            android:layout_marginTop="@dimen/unit8dp"
+            android:text="@string/kaydet" />
+
+        <!--recycler view to display our data-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewNameSurname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/buttonFormSave"
+            android:layout_marginStart="@dimen/unit8dp"
+            android:layout_marginTop="@dimen/unit8dp" />
 
     </RelativeLayout>
 </ScrollView>

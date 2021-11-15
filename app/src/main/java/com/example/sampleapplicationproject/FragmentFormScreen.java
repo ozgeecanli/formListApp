@@ -1,5 +1,6 @@
 package com.example.sampleapplicationproject;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -10,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.content.SharedPreferences;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,17 +24,22 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FragmentFormScreen extends Fragment {
+public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     // creating variables for our ui components.
     @BindView(R.id.editTextFormName)
     EditText editTextFormNameEdit;
     @BindView(R.id.editTextFormSurname)
     EditText editTextFormSurnameEdit;
+    @BindView(R.id.buttonBirthday)
+    Button buttonBirthdayEdit;
+    @BindView(R.id.textViewBirthday)
+    TextView textViewBirthdayEdit;
     @BindView(R.id.buttonFormAdd)
     Button buttonFormAddEdit;
     @BindView(R.id.buttonFormSave)
@@ -79,7 +87,35 @@ public class FragmentFormScreen extends Fragment {
                 saveData();
             }
         });
+
+        //button for birthday
+        buttonBirthdayEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDataPickerDialog();
+            }
+        });
+
         return setContentView;
+    }
+
+    //select birthday on calendar
+    private void showDataPickerDialog() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                getContext(),
+                this,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        );
+        datePickerDialog.show();
+    }
+
+    //birthday textview
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        String date = "Doğum günü tarihiniz: " + dayOfMonth + "." + (month + 1) + "." + year;
+        textViewBirthdayEdit.setText(date);
     }
 
     private void buildRecyclerView() {
@@ -97,6 +133,7 @@ public class FragmentFormScreen extends Fragment {
         // setting adapter to our recycler view.
         recyclerViewNameSurnameEdit.setAdapter(adapter);
     }
+
     private void loadData() {
         // method to load arraylist from shared prefs initializing our shared prefs with name as
         // shared preferences.
@@ -111,7 +148,8 @@ public class FragmentFormScreen extends Fragment {
         String json = sharedPreferences.getString("courses", null);
 
         // below line is to get the type of our array list.
-        Type type = new TypeToken<ArrayList<NameSurnameModal>>() {}.getType();
+        Type type = new TypeToken<ArrayList<NameSurnameModal>>() {
+        }.getType();
 
         /// in below line we are getting data from gson and saving it to our array list
         nameSurnameModalArrayList = gson.fromJson(json, type);
@@ -149,4 +187,5 @@ public class FragmentFormScreen extends Fragment {
         Toast.makeText(getActivity(), "Saved Array List to Shared preferences. ",
                 Toast.LENGTH_SHORT).show();
     }
+
 }
