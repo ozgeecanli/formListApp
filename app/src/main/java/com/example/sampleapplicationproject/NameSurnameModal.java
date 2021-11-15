@@ -3,8 +3,7 @@ package com.example.sampleapplicationproject;
 public class NameSurnameModal {
 
 
-    // variables for our course
-    // name and description.
+    // variables for our course name and description.
     private String courseName;
     private String courseDescription;
 

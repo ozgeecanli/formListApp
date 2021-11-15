@@ -21,12 +21,21 @@
         android:layout_below="@id/editTextFormName"
         android:hint="@string/soyadinizi_giriniz" />
 
-    <!--button for adding and saving data to recycler view-->
+    <!--button for adding data to recycler view-->
+    <Button
+        android:id="@+id/buttonFormAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextFormSurname"
+        android:layout_margin="10dp"
+        android:text="@string/ekle" />
+
+    <!--button for saving data to recycler view-->
     <Button
         android:id="@+id/buttonFormSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextFormSurname"
+        android:layout_below="@id/buttonFormAdd"
         android:layout_margin="10dp"
         android:text="@string/kaydet" />
 

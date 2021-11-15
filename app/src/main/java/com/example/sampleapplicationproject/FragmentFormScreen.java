@@ -32,6 +32,8 @@ public class FragmentFormScreen extends Fragment {
     EditText editTextFormNameEdit;
     @BindView(R.id.editTextFormSurname)
     EditText editTextFormSurnameEdit;
+    @BindView(R.id.buttonFormAdd)
+    Button buttonFormAddEdit;
     @BindView(R.id.buttonFormSave)
     Button buttonFormSaveEdit;
     @BindView(R.id.recyclerViewNameSurname)
@@ -52,19 +54,29 @@ public class FragmentFormScreen extends Fragment {
         ButterKnife.bind(this, setContentView);
 
         // calling method to load data from shared prefs.
-        loadSaveData();
+        loadData();
 
         // calling method to build recycler view.
         buildRecyclerView();
 
         // on click listener for adding and saving data to array list.
-        buttonFormSaveEdit.setOnClickListener(new View.OnClickListener() {
+        buttonFormAddEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // below line is use to add data to array list.
-                nameSurnameModalArrayList.add(new NameSurnameModal(editTextFormNameEdit.getText().toString(), editTextFormSurnameEdit.getText().toString()));
+                nameSurnameModalArrayList.add(new NameSurnameModal(editTextFormNameEdit.getText().
+                        toString(), editTextFormSurnameEdit.getText().toString()));
                 // notifying adapter when new data added.
                 adapter.notifyItemInserted(nameSurnameModalArrayList.size());
+            }
+        });
+
+        // on click listener for saving data in shared preferences.
+        buttonFormSaveEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // calling method to save data in shared prefs.
+                saveData();
             }
         });
         return setContentView;
@@ -85,8 +97,7 @@ public class FragmentFormScreen extends Fragment {
         // setting adapter to our recycler view.
         recyclerViewNameSurnameEdit.setAdapter(adapter);
     }
-
-    private void loadSaveData() {
+    private void loadData() {
         // method to load arraylist from shared prefs initializing our shared prefs with name as
         // shared preferences.
         SharedPreferences sharedPreferences = this.getActivity().
@@ -100,10 +111,9 @@ public class FragmentFormScreen extends Fragment {
         String json = sharedPreferences.getString("courses", null);
 
         // below line is to get the type of our array list.
-        Type type = new TypeToken<ArrayList<NameSurnameModal>>() {
-        }.getType();
+        Type type = new TypeToken<ArrayList<NameSurnameModal>>() {}.getType();
 
-        // in below line we are getting data from gson and saving it to our array list
+        /// in below line we are getting data from gson and saving it to our array list
         nameSurnameModalArrayList = gson.fromJson(json, type);
 
         // checking below if the array list is empty or not
@@ -112,6 +122,14 @@ public class FragmentFormScreen extends Fragment {
             // creating a new array list.
             nameSurnameModalArrayList = new ArrayList<>();
         }
+    }
+
+    private void saveData() {
+        // method to load arraylist from shared prefs initializing our shared prefs with name as
+        // shared preferences.
+        SharedPreferences sharedPreferences = this.getActivity().
+                getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
+
         // creating a variable for editor to store data in shared preferences.
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
