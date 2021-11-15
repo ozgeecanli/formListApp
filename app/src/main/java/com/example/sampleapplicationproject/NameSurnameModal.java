@@ -1,6 +1,6 @@
 package com.example.sampleapplicationproject;
 
-public class CourseModal {
+public class NameSurnameModal {
 
 
     // variables for our course
@@ -9,7 +9,7 @@ public class CourseModal {
     private String courseDescription;
 
     // creating constructor for our variables.
-    public CourseModal(String courseName, String courseDescription) {
+    public NameSurnameModal(String courseName, String courseDescription) {
         this.courseName = courseName;
         this.courseDescription = courseDescription;
     }
