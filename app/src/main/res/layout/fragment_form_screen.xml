@@ -49,14 +49,25 @@
             android:layout_marginTop="@dimen/unit8dp"
             android:hint="@string/dogum_gunu_tarihiniz"
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="@dimen/unit20sp" />
+
+        <!--image view for taking photo-->
+        <ImageView
+            android:id="@+id/imageViewProfilePhoto"
+            android:layout_width="@dimen/unit100dp"
+            android:layout_height="@dimen/unit100dp"
+            android:layout_below="@+id/textViewBirthday"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/unit8dp"
+            android:layout_marginTop="@dimen/unit8dp"
+            android:src="@drawable/ic_person" />
 
         <!--button for adding data to recycler view-->
         <Button
             android:id="@+id/buttonFormAdd"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_below="@id/textViewBirthday"
+            android:layout_below="@id/imageViewProfilePhoto"
             android:layout_marginStart="@dimen/unit8dp"
             android:layout_marginTop="@dimen/unit8dp"
             android:text="@string/ekle" />

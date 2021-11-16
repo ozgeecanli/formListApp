@@ -1,11 +1,23 @@
 package com.example.sampleapplicationproject;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +25,7 @@ import android.content.SharedPreferences;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -40,6 +54,8 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
     Button buttonBirthdayEdit;
     @BindView(R.id.textViewBirthday)
     TextView textViewBirthdayEdit;
+    @BindView(R.id.imageViewProfilePhoto)
+    ImageView imageViewProfilePhotoEdit;
     @BindView(R.id.buttonFormAdd)
     Button buttonFormAddEdit;
     @BindView(R.id.buttonFormSave)
@@ -50,6 +66,9 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
     // variable for our adapter class and array list
     private NameSurnameAdapter adapter;
     private ArrayList<NameSurnameModal> nameSurnameModalArrayList;
+
+    //variable for profile photo
+    private Uri imageViewProfilePhotoUri;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -96,7 +115,45 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
             }
         });
 
+        //for profile photo
+        imageViewProfilePhotoEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ContextCompat.checkSelfPermission(getContext(),
+                        Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                } else {
+                    Intent photo = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(photo, 2);
+                }
+            }
+        });
+
         return setContentView;
+    }
+
+    //profile photo
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent photo = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(photo, 2);
+            }
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
+            Uri uri = data.getData();
+            imageViewProfilePhotoEdit.setImageURI(uri);
+        }
     }
 
     //select birthday on calendar
