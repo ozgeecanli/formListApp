@@ -14,11 +14,11 @@ import java.util.ArrayList;
 public class NameSurnameAdapter extends RecyclerView.Adapter<NameSurnameAdapter.ViewHolder> {
 
     // creating a variable for array list and context.
-    private ArrayList<NameSurnameModal> nameSurnameModalArrayList;
+    private ArrayList<NameSurnameModel> nameSurnameModalArrayList;
     private Context context;
 
     // creating a constructor for our variables.
-    public NameSurnameAdapter(ArrayList<NameSurnameModal> nameSurnameModalArrayList, Context context) {
+    public NameSurnameAdapter(ArrayList<NameSurnameModel> nameSurnameModalArrayList, Context context) {
         this.nameSurnameModalArrayList = nameSurnameModalArrayList;
         this.context = context;
     }
@@ -34,7 +34,7 @@ public class NameSurnameAdapter extends RecyclerView.Adapter<NameSurnameAdapter.
     @Override
     public void onBindViewHolder(@NonNull NameSurnameAdapter.ViewHolder holder, int position) {
         // setting data to our views of recycler view.
-        NameSurnameModal modal = nameSurnameModalArrayList.get(position);
+        NameSurnameModel modal = nameSurnameModalArrayList.get(position);
         holder.courseNameTV.setText(modal.getCourseName());
         holder.courseDescTV.setText(modal.getCourseDescription());
     }

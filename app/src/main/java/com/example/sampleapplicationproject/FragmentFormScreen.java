@@ -7,7 +7,6 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -35,7 +34,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -65,7 +63,7 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
 
     // variable for our adapter class and array list
     private NameSurnameAdapter adapter;
-    private ArrayList<NameSurnameModal> nameSurnameModalArrayList;
+    private ArrayList<NameSurnameModel> nameSurnameModalArrayList;
 
     //variable for profile photo
     private Uri imageViewProfilePhotoUri;
@@ -91,7 +89,7 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
             @Override
             public void onClick(View v) {
                 // below line is use to add data to array list.
-                nameSurnameModalArrayList.add(new NameSurnameModal(editTextFormNameEdit.getText().
+                nameSurnameModalArrayList.add(new NameSurnameModel(editTextFormNameEdit.getText().
                         toString(), editTextFormSurnameEdit.getText().toString()));
                 // notifying adapter when new data added.
                 adapter.notifyItemInserted(nameSurnameModalArrayList.size());
@@ -205,7 +203,7 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
         String json = sharedPreferences.getString("courses", null);
 
         // below line is to get the type of our array list.
-        Type type = new TypeToken<ArrayList<NameSurnameModal>>() {
+        Type type = new TypeToken<ArrayList<NameSurnameModel>>() {
         }.getType();
 
         /// in below line we are getting data from gson and saving it to our array list

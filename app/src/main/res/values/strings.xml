@@ -3,7 +3,7 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Hello blank fragmentCustomAccountList</string>
     <string name="ana_sayfa">Ana Sayfa</string>
     <string name="ornek_uygulama_projesi">Örnek Uygulama Projesi</string>
     <string name="form_ekrani">Form Ekranı</string>
@@ -16,4 +16,8 @@
     <string name="ekle">Ekle</string>
     <string name="dogum_gunu_tarihinizi_seciniz">Doğum Günü Tarihinizi Seçiniz</string>
     <string name="dogum_gunu_tarihiniz">Doğum Günü Tarihiniz</string>
+    <string name="hesap_adi">Hesap Adı</string>
+    <string name="sube_adi">Şube Adı</string>
+    <string name="hesap_no">Hesap No</string>
+    <string name="bakiye">Bakiye</string>
 </resources>
