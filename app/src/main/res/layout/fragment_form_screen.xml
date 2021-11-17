@@ -64,6 +64,7 @@
 
         <!-- null account for custom account-->
         <com.example.sampleapplicationproject.widgets.CustomAccountWidget
+            android:background="#B7E4E0"
             android:id="@+id/customAccountBase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
