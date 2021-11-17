@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-
 public class CustomAccountAdapter extends RecyclerView.Adapter<CustomAccountAdapter.ViewHolder> {
 
     // creating a variable for array list and context.
@@ -49,10 +47,10 @@ public class CustomAccountAdapter extends RecyclerView.Adapter<CustomAccountAdap
         CustomAccountSelectionModel modal = arrayListCustomAccountSelectionModel.get(position);
 
 
-        holder.textViewAccountNameView.setText(modal.getAccountNameModel());
-        holder.textViewDepartmentNameView.setText(modal.getDepartmentNameModel());
-        holder.textViewAccountNumberView.setText(String.valueOf(modal.getAccountNumberModel()));
-        holder.textViewBalanceView.setText(String.valueOf(modal.getBalanceModel()));
+        holder.textViewAccountNameView.setText(modal.getAccountName());
+        holder.textViewDepartmentNameView.setText(modal.getDepartmentName());
+        holder.textViewAccountNumberView.setText(String.valueOf(modal.getAccountNumber()));
+        holder.textViewBalanceView.setText(String.valueOf(modal.getBalance()));
 
     }
 
@@ -85,10 +83,10 @@ public class CustomAccountAdapter extends RecyclerView.Adapter<CustomAccountAdap
             int position = getAdapterPosition();
             Bundle bundle = new Bundle();
             CustomAccountSelectionModel modal2 = arrayListCustomAccountSelectionModel.get(position);
-            bundle.putString("accountName", modal2.getAccountNameModel());
-            bundle.putString("departmentNameModel", modal2.getDepartmentNameModel());
-            bundle.putInt("accountNumber", modal2.getAccountNumberModel());
-            bundle.putInt("balance", modal2.getBalanceModel());
+            bundle.putString("accountName", modal2.getAccountName());
+            bundle.putString("departmentNameModel", modal2.getDepartmentName());
+            bundle.putInt("accountNumber", modal2.getAccountNumber());
+            bundle.putDouble("balance", modal2.getBalance());
 
             Fragment nextFrag = new FragmentFormScreen();
             nextFrag.setArguments(bundle);

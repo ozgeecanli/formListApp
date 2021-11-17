@@ -31,6 +31,8 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sampleapplicationproject.models.NameSurnameModel;
+import com.example.sampleapplicationproject.widgets.CustomAccountSelectionWidget;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -60,6 +62,9 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
     Button buttonFormSaveEdit;
     @BindView(R.id.recyclerViewNameSurname)
     RecyclerView recyclerViewNameSurnameEdit;
+    @BindView(R.id.customAccountBase)
+    CustomAccountSelectionWidget customAccountBase;
+
 
     // variable for our adapter class and array list
     private NameSurnameAdapter adapter;
@@ -127,6 +132,10 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
                 }
             }
         });
+
+        //add account
+        customAccountBase.setAccount(new CustomAccountSelectionModel("Vadesiz Hesap",
+                "Ataşehir Şubesi",12345678, 1000));
 
         return setContentView;
     }

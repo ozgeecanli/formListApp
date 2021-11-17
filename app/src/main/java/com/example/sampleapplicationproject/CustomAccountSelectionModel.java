@@ -2,47 +2,47 @@ package com.example.sampleapplicationproject;
 
 public class CustomAccountSelectionModel {
 
-    String accountNameModel;
-    String departmentNameModel;
-    int accountNumberModel;
-    int balanceModel;
+    String accountName;
+    String departmentName;
+    int accountNumber;
+    double balance;
 
     public CustomAccountSelectionModel(String accountNameModel, String departmentNameModel, int accountNumberModel, int balanceModel) {
-        this.accountNameModel = accountNameModel;
-        this.departmentNameModel = departmentNameModel;
-        this.accountNumberModel = accountNumberModel;
-        this.balanceModel = balanceModel;
+        this.accountName = accountNameModel;
+        this.departmentName = departmentNameModel;
+        this.accountNumber = accountNumberModel;
+        this.balance = balanceModel;
     }
 
-    public String getAccountNameModel() {
-        return accountNameModel;
+    public String getAccountName() {
+        return accountName;
     }
 
-    public void setAccountNameModel(String accountNameModel) {
-        this.accountNameModel = accountNameModel;
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 
-    public String getDepartmentNameModel() {
-        return departmentNameModel;
+    public String getDepartmentName() {
+        return departmentName;
     }
 
-    public void setDepartmentNameModel(String departmentNameModel) {
-        this.departmentNameModel = departmentNameModel;
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 
-    public int getAccountNumberModel() {
-        return accountNumberModel;
+    public int getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setAccountNumberModel(int accountNumberModel) {
-        this.accountNumberModel = accountNumberModel;
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
-    public int getBalanceModel() {
-        return balanceModel;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setBalanceModel(int balanceModel) {
-        this.balanceModel = balanceModel;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }

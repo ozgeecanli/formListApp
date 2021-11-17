@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sampleapplicationproject.models.NameSurnameModel;
+
 import java.util.ArrayList;
 
 public class NameSurnameAdapter extends RecyclerView.Adapter<NameSurnameAdapter.ViewHolder> {

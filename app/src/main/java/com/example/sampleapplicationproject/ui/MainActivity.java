@@ -1,4 +1,4 @@
-package com.example.sampleapplicationproject;
+package com.example.sampleapplicationproject.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -10,6 +10,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.sampleapplicationproject.FragmentFormListScreen;
+import com.example.sampleapplicationproject.FragmentFormScreen;
+import com.example.sampleapplicationproject.FragmentHome;
+import com.example.sampleapplicationproject.R;
 import com.google.android.material.navigation.NavigationView;
 
 import butterknife.BindView;
