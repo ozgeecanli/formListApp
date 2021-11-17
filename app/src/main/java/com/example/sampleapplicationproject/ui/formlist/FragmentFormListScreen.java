@@ -1,4 +1,4 @@
-package com.example.sampleapplicationproject;
+package com.example.sampleapplicationproject.ui.formlist;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.sampleapplicationproject.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

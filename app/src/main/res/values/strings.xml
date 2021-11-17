@@ -20,4 +20,9 @@
     <string name="sube_adi">Şube Adı</string>
     <string name="hesap_no">Hesap No</string>
     <string name="bakiye">Bakiye</string>
+    <string name="hesap_adi_iki_nokta">Hesap Adı:</string>
+    <string name="sube_adi_iki_nokta">Şube Adı:</string>
+    <string name="hesap_no_iki_nokta">Hesap No:</string>
+    <string name="bakiye_iki_nokta">Bakiye:</string>
+    <string name="bilgi_yer_almamaktadir">Bilgi yer almamaktadır.</string>
 </resources>

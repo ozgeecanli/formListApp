@@ -1,34 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <TextView
-        android:id="@+id/textViewAccountName"
+    android:orientation="vertical"
+    android:padding="@dimen/unit8dp">
+
+    <LinearLayout
+        android:id="@+id/layoutLeftSide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hesap_adi"
-        android:textSize="20sp" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewDepartmentName"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textViewAccountName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hesap_adi_iki_nokta"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textViewDepartmentName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sube_adi_iki_nokta"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textViewAccountNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hesap_no_iki_nokta"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textViewBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bakiye_iki_nokta"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutRightSide"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sube_adi"
-        android:textSize="20sp" />
+        android:layout_marginStart="@dimen/unit8dp"
+        android:layout_toEndOf="@+id/layoutLeftSide"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewAccountNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hesap_no"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/textViewAccountNameRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/bilgi_yer_almamaktadir"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/textViewBalance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/bakiye"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/textViewDepartmentRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/bilgi_yer_almamaktadir"
+            android:textSize="20sp" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textViewAccountNoRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/bilgi_yer_almamaktadir"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textViewBalanceRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/bilgi_yer_almamaktadir"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</RelativeLayout>

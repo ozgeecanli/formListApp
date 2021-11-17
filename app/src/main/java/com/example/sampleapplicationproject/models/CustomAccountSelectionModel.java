@@ -1,4 +1,4 @@
-package com.example.sampleapplicationproject;
+package com.example.sampleapplicationproject.models;
 
 public class CustomAccountSelectionModel {
 

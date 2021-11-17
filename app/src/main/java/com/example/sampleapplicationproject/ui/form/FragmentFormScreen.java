@@ -1,4 +1,4 @@
-package com.example.sampleapplicationproject;
+package com.example.sampleapplicationproject.ui.form;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -31,6 +31,9 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sampleapplicationproject.NameSurnameAdapter;
+import com.example.sampleapplicationproject.R;
+import com.example.sampleapplicationproject.models.CustomAccountSelectionModel;
 import com.example.sampleapplicationproject.models.NameSurnameModel;
 import com.example.sampleapplicationproject.widgets.CustomAccountSelectionWidget;
 import com.google.gson.Gson;

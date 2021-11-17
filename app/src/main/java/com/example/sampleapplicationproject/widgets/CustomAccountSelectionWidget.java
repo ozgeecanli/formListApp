@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.example.sampleapplicationproject.CustomAccountSelectionModel;
+import com.example.sampleapplicationproject.models.CustomAccountSelectionModel;
 import com.example.sampleapplicationproject.R;
 
 public class CustomAccountSelectionWidget extends LinearLayout {
