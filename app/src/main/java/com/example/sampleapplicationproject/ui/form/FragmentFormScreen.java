@@ -33,9 +33,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sampleapplicationproject.NameSurnameAdapter;
 import com.example.sampleapplicationproject.R;
-import com.example.sampleapplicationproject.models.CustomAccountSelectionModel;
+import com.example.sampleapplicationproject.models.CustomAccountModel;
 import com.example.sampleapplicationproject.models.NameSurnameModel;
-import com.example.sampleapplicationproject.widgets.CustomAccountSelectionWidget;
+import com.example.sampleapplicationproject.widgets.CustomAccountWidget;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -66,7 +66,7 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
     @BindView(R.id.recyclerViewNameSurname)
     RecyclerView recyclerViewNameSurnameEdit;
     @BindView(R.id.customAccountBase)
-    CustomAccountSelectionWidget customAccountBase;
+    CustomAccountWidget customAccountBase;
 
 
     // variable for our adapter class and array list
@@ -137,7 +137,7 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
         });
 
         //add account
-        customAccountBase.setAccount(new CustomAccountSelectionModel("Vadesiz Hesap",
+        customAccountBase.setAccount(new CustomAccountModel("Vadesiz Hesap",
                 "Ataşehir Şubesi",12345678, 1000));
 
         return setContentView;

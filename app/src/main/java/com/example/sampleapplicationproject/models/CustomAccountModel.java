@@ -1,13 +1,13 @@
 package com.example.sampleapplicationproject.models;
 
-public class CustomAccountSelectionModel {
+public class CustomAccountModel {
 
     String accountName;
     String departmentName;
     int accountNumber;
     double balance;
 
-    public CustomAccountSelectionModel(String accountNameModel, String departmentNameModel, int accountNumberModel, int balanceModel) {
+    public CustomAccountModel(String accountNameModel, String departmentNameModel, int accountNumberModel, int balanceModel) {
         this.accountName = accountNameModel;
         this.departmentName = departmentNameModel;
         this.accountNumber = accountNumberModel;

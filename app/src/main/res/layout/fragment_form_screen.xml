@@ -63,7 +63,7 @@
             android:src="@drawable/ic_person" />
 
         <!-- null account for custom account-->
-        <com.example.sampleapplicationproject.widgets.CustomAccountSelectionWidget
+        <com.example.sampleapplicationproject.widgets.CustomAccountWidget
             android:id="@+id/customAccountBase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

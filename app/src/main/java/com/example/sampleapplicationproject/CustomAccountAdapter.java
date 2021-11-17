@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sampleapplicationproject.models.CustomAccountSelectionModel;
+import com.example.sampleapplicationproject.models.CustomAccountModel;
 import com.example.sampleapplicationproject.ui.form.FragmentFormScreen;
 
 import java.util.ArrayList;
@@ -20,11 +20,11 @@ import java.util.ArrayList;
 public class CustomAccountAdapter extends RecyclerView.Adapter<CustomAccountAdapter.ViewHolder> {
 
     // creating a variable for array list and context.
-    private ArrayList<CustomAccountSelectionModel> arrayListCustomAccountSelectionModel;
+    private ArrayList<CustomAccountModel> arrayListCustomAccountSelectionModel;
     private Context context;
 
     // creating a constructor for our variables.
-    public CustomAccountAdapter(ArrayList<CustomAccountSelectionModel> arrayListCustomAccountSelectionModel, Context context) {
+    public CustomAccountAdapter(ArrayList<CustomAccountModel> arrayListCustomAccountSelectionModel, Context context) {
         this.arrayListCustomAccountSelectionModel = arrayListCustomAccountSelectionModel;
         this.context = context;
     }
@@ -47,7 +47,7 @@ public class CustomAccountAdapter extends RecyclerView.Adapter<CustomAccountAdap
         int accountNumberHolder = arrayListCustomAccountSelectionModel.get(position).getAccountNumberModel();
         int balanceHolder = arrayListCustomAccountSelectionModel.get(position).getBalanceModel();
         */
-        CustomAccountSelectionModel modal = arrayListCustomAccountSelectionModel.get(position);
+        CustomAccountModel modal = arrayListCustomAccountSelectionModel.get(position);
 
 
         holder.textViewAccountNameView.setText(modal.getAccountName());
@@ -85,7 +85,7 @@ public class CustomAccountAdapter extends RecyclerView.Adapter<CustomAccountAdap
 
             int position = getAdapterPosition();
             Bundle bundle = new Bundle();
-            CustomAccountSelectionModel modal2 = arrayListCustomAccountSelectionModel.get(position);
+            CustomAccountModel modal2 = arrayListCustomAccountSelectionModel.get(position);
             bundle.putString("accountName", modal2.getAccountName());
             bundle.putString("departmentNameModel", modal2.getDepartmentName());
             bundle.putInt("accountNumber", modal2.getAccountNumber());
