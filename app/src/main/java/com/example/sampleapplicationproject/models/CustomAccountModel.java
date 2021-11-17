@@ -1,5 +1,7 @@
 package com.example.sampleapplicationproject.models;
 
+//bu class modelim. model sınıftır. recycler view. button gibi. aşagıda tanımlılar string.
+
 public class CustomAccountModel {
 
     String accountName;

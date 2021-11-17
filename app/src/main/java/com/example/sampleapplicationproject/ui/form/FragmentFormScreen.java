@@ -136,7 +136,7 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
             }
         });
 
-        //add account
+        //add widget custom account
         customAccountBase.setAccount(new CustomAccountModel("Vadesiz Hesap",
                 "Ataşehir Şubesi",12345678, 1000));
 

@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import com.example.sampleapplicationproject.models.CustomAccountModel;
 import com.example.sampleapplicationproject.R;
 
+//içine koydugumuz hesabın bilgilerini bize gösteriyor
+
 public class CustomAccountWidget extends LinearLayout {
 
     TextView textViewAccountNameInit;
@@ -40,12 +42,15 @@ public class CustomAccountWidget extends LinearLayout {
 
     private void init(Context context, AttributeSet attrs) {
         LayoutInflater.from(context).inflate(R.layout.widget_account_component, this);
+        //add views
         textViewAccountNameInit = findViewById(R.id.textViewAccountNameRight);
         textViewDepartmentNameInit = findViewById(R.id.textViewDepartmentRight);
         textViewAccountNumberInit = findViewById(R.id.textViewAccountNoRight);
         textViewBalanceInit = findViewById(R.id.textViewBalanceRight);
     }
 
+    //seçili hesabın bilgileri set account ile içine koyuyoruz.
+    //textview lara secili hesabın bilgilerini basıyor
     public void setAccount(CustomAccountModel customAccount) {
         textViewAccountNameInit.setText(customAccount.getAccountName());
         textViewDepartmentNameInit.setText(customAccount.getDepartmentName());
