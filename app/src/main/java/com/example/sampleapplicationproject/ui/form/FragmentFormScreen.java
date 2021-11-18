@@ -3,6 +3,7 @@ package com.example.sampleapplicationproject.ui.form;
 import static android.app.Activity.RESULT_OK;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -28,9 +29,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sampleapplicationproject.FragmentCustomAccountList;
 import com.example.sampleapplicationproject.NameSurnameAdapter;
 import com.example.sampleapplicationproject.R;
 import com.example.sampleapplicationproject.models.CustomAccountModel;
@@ -67,7 +70,6 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
     RecyclerView recyclerViewNameSurnameEdit;
     @BindView(R.id.customAccountBase)
     CustomAccountWidget customAccountBase;
-
 
     // variable for our adapter class and array list
     private NameSurnameAdapter adapter;
@@ -136,16 +138,32 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
             }
         });
 
+        //click widget custom account
+        customAccountBase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment someFragment = new FragmentCustomAccountList();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
+                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.commit();
+
+                //toast message for try
+                //new AlertDialog.Builder(getContext()).setTitle("touched").show();
+            }
+        });
+
         //add widget custom account
         customAccountBase.setAccount(new CustomAccountModel("Vadesiz Hesap",
-                "Ataşehir Şubesi",12345678, 1000));
+                "Ataşehir Şubesi", 12345678, 1000));
 
         return setContentView;
     }
 
     //profile photo
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == 1) {
