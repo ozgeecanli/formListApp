@@ -31,7 +31,7 @@ public class CustomAccountAdapter extends RecyclerView.Adapter<CustomAccountAdap
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CustomAccountAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // below line is to inflate our layout.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_account_component, parent, false);
         return new ViewHolder(view);
@@ -48,13 +48,10 @@ public class CustomAccountAdapter extends RecyclerView.Adapter<CustomAccountAdap
         int balanceHolder = arrayListCustomAccountSelectionModel.get(position).getBalanceModel();
         */
         CustomAccountModel modal = arrayListCustomAccountSelectionModel.get(position);
-
-
         holder.textViewAccountNameView.setText(modal.getAccountName());
         holder.textViewDepartmentNameView.setText(modal.getDepartmentName());
         holder.textViewAccountNumberView.setText(String.valueOf(modal.getAccountNumber()));
         holder.textViewBalanceView.setText(String.valueOf(modal.getBalance()));
-
     }
 
     @Override
@@ -73,10 +70,10 @@ public class CustomAccountAdapter extends RecyclerView.Adapter<CustomAccountAdap
             super(itemView);
 
             // initializing our views with their ids on item_account_component
-            textViewAccountNameView = itemView.findViewById(R.id.textViewAccountName);
-            textViewDepartmentNameView = itemView.findViewById(R.id.textViewDepartmentName);
-            textViewAccountNumberView = itemView.findViewById(R.id.textViewAccountNumber);
-            textViewBalanceView = itemView.findViewById(R.id.textViewBalance);
+            textViewAccountNameView = itemView.findViewById(R.id.textViewAccountNameRight);
+            textViewDepartmentNameView = itemView.findViewById(R.id.textViewDepartmentRight);
+            textViewAccountNumberView = itemView.findViewById(R.id.textViewAccountNoRight);
+            textViewBalanceView = itemView.findViewById(R.id.textViewBalanceRight);
             itemView.setOnClickListener(this);
         }
 
