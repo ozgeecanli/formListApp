@@ -8,6 +8,7 @@
 
     <com.example.sampleapplicationproject.widgets.CustomAccountSelectionWidget
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="#B7E4E0" />
 
 </LinearLayout>

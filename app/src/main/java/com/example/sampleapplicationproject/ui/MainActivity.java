@@ -12,7 +12,6 @@ import android.view.MenuItem;
 
 import com.example.sampleapplicationproject.ui.formlist.FragmentFormListScreen;
 import com.example.sampleapplicationproject.ui.form.FragmentFormScreen;
-import com.example.sampleapplicationproject.FragmentHome;
 import com.example.sampleapplicationproject.R;
 import com.google.android.material.navigation.NavigationView;
 

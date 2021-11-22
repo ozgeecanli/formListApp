@@ -3,7 +3,6 @@ package com.example.sampleapplicationproject.ui.form;
 import static android.app.Activity.RESULT_OK;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -33,10 +32,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sampleapplicationproject.FragmentCustomAccountList;
 import com.example.sampleapplicationproject.NameSurnameAdapter;
 import com.example.sampleapplicationproject.R;
-import com.example.sampleapplicationproject.models.CustomAccountModel;
 import com.example.sampleapplicationproject.models.NameSurnameModel;
 import com.example.sampleapplicationproject.widgets.CustomAccountWidget;
 import com.google.gson.Gson;
@@ -152,11 +149,6 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
                 //new AlertDialog.Builder(getContext()).setTitle("touched").show();
             }
         });
-
-        //add widget custom account
-        customAccountBase.setAccount(new CustomAccountModel("Vadesiz Hesap",
-                "Ataşehir Şubesi", 12345678, 1000));
-
         return setContentView;
     }
 

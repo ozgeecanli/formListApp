@@ -1,4 +1,4 @@
-package com.example.sampleapplicationproject;
+package com.example.sampleapplicationproject.ui.form;
 
 import android.os.Bundle;
 
@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.sampleapplicationproject.CustomAccountListAdapter;
+import com.example.sampleapplicationproject.R;
 import com.example.sampleapplicationproject.models.CustomAccountSelectionModel;
 
 import java.util.ArrayList;
