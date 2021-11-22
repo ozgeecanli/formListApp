@@ -144,7 +144,7 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
             public void onClick(View v) {
                 Fragment someFragment = new FragmentCustomAccountList();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
+                transaction.replace(R.id.fragment_container, someFragment); // give your fragment container id in first parameter
                 transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
                 transaction.commit();
 

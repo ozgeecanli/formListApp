@@ -64,13 +64,13 @@
 
         <!-- null account for custom account-->
         <com.example.sampleapplicationproject.widgets.CustomAccountWidget
-            android:background="#B7E4E0"
             android:id="@+id/customAccountBase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/imageViewProfilePhoto"
             android:layout_marginStart="@dimen/unit8dp"
-            android:layout_marginTop="@dimen/unit8dp" />
+            android:layout_marginTop="@dimen/unit8dp"
+            android:background="#B7E4E0" />
 
         <!--button for adding data to recycler view-->
         <Button
