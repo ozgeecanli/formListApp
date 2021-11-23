@@ -9,7 +9,7 @@ public class CustomAccountModel {
     int accountNumber;
     double balance;
 
-    public CustomAccountModel(String accountNameModel, String departmentNameModel, int accountNumberModel, int balanceModel) {
+    public CustomAccountModel(String accountNameModel, String departmentNameModel, int accountNumberModel, double balanceModel) {
         this.accountName = accountNameModel;
         this.departmentName = departmentNameModel;
         this.accountNumber = accountNumberModel;

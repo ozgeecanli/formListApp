@@ -34,6 +34,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sampleapplicationproject.NameSurnameAdapter;
 import com.example.sampleapplicationproject.R;
+import com.example.sampleapplicationproject.models.CustomAccountModel;
 import com.example.sampleapplicationproject.models.NameSurnameModel;
 import com.example.sampleapplicationproject.widgets.CustomAccountWidget;
 import com.google.gson.Gson;
@@ -150,6 +151,20 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
             }
         });
         return setContentView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            String selectedAccountName = bundle.getString("AccountName");
+            String selectedDepartmentName = bundle.getString("DepartmentName");
+            int selectedAccountNumber = Integer.parseInt(bundle.getString("AccountNumber"));
+            double selectedBalance = Double.parseDouble(bundle.getString("Balance"));
+
+            customAccountBase.setAccount(new CustomAccountModel(selectedAccountName, selectedDepartmentName, selectedAccountNumber, selectedBalance));
+        }
     }
 
     //profile photo
