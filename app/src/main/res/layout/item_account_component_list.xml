@@ -4,11 +4,11 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="@dimen/unit10dp">
 
     <com.example.sampleapplicationproject.widgets.CustomAccountSelectionWidget
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#B7E4E0" />
+        android:background="@color/custom_account_selection_widget" />
 
 </LinearLayout>

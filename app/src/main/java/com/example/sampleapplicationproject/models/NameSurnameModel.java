@@ -2,7 +2,6 @@ package com.example.sampleapplicationproject.models;
 
 public class NameSurnameModel {
 
-
     // variables for our course name and description.
     private String courseName;
     private String courseDescription;
@@ -11,6 +10,9 @@ public class NameSurnameModel {
     public NameSurnameModel(String courseName, String courseDescription) {
         this.courseName = courseName;
         this.courseDescription = courseDescription;
+    }
+
+    public NameSurnameModel() {
     }
 
     // creating getter and setter methods.

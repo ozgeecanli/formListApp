@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     tools:context=".ui.FragmentHome">
 
     <RelativeLayout
@@ -70,7 +70,7 @@
             android:layout_below="@id/imageViewProfilePhoto"
             android:layout_marginStart="@dimen/unit8dp"
             android:layout_marginTop="@dimen/unit8dp"
-            android:background="#B7E4E0" />
+            android:background="@color/custom_account_widget" />
 
         <!--button for adding data to recycler view-->
         <Button
@@ -102,5 +102,5 @@
             android:layout_marginTop="@dimen/unit8dp" />
 
     </RelativeLayout>
-</ScrollView>
 
+</ScrollView>

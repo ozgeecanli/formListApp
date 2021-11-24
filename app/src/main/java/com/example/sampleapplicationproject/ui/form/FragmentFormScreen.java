@@ -279,5 +279,4 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
         Toast.makeText(getActivity(), "Saved Array List to Shared preferences. ",
                 Toast.LENGTH_SHORT).show();
     }
-
 }

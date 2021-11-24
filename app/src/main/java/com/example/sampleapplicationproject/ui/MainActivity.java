@@ -18,14 +18,13 @@ import com.google.android.material.navigation.NavigationView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.toolbar)
     public Toolbar toolbar;
-
     @BindView(R.id.drawer_layout)
     public DrawerLayout drawer;
-
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 toolbar.setTitle("Form Ekranı");
                 break;
         }
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -85,5 +83,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
-
 }

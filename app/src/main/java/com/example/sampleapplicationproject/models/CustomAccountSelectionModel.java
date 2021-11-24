@@ -13,6 +13,9 @@ public class CustomAccountSelectionModel {
         this.balanceSelection = balanceSelection;
     }
 
+    public CustomAccountSelectionModel() {
+    }
+
     public String getAccountNameSelection() {
         return accountNameSelection;
     }

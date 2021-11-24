@@ -16,28 +16,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hesap_adi_iki_nokta"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewDepartmentName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sube_adi_iki_nokta"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewAccountNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hesap_no_iki_nokta"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bakiye_iki_nokta"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -53,28 +53,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/bilgi_yer_almamaktadir"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewDepartmentRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/bilgi_yer_almamaktadir"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewAccountNoRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/bilgi_yer_almamaktadir"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewBalanceRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/bilgi_yer_almamaktadir"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
     </LinearLayout>
 
 </RelativeLayout>

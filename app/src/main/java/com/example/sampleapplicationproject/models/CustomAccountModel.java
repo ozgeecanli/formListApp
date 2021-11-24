@@ -1,7 +1,5 @@
 package com.example.sampleapplicationproject.models;
 
-//bu class modelim. model sınıftır. recycler view. button gibi. aşagıda tanımlılar string.
-
 public class CustomAccountModel {
 
     String accountName;
@@ -14,6 +12,9 @@ public class CustomAccountModel {
         this.departmentName = departmentNameModel;
         this.accountNumber = accountNumberModel;
         this.balance = balanceModel;
+    }
+
+    public CustomAccountModel() {
     }
 
     public String getAccountName() {

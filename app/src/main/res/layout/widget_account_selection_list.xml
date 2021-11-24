@@ -16,28 +16,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hesap_adi_iki_nokta"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewDepartmentNameList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sube_adi_iki_nokta"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewAccountNumberList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hesap_no_iki_nokta"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewBalanceList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bakiye_iki_nokta"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -52,25 +52,25 @@
             android:id="@+id/textViewAccountNameRightList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewDepartmentRightList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewAccountNoRightList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewBalanceRightList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp" />
+            android:textSize="@dimen/unit20sp" />
     </LinearLayout>
 
 </RelativeLayout>

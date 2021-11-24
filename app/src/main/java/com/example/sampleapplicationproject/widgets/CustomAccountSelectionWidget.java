@@ -4,7 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
+
 import androidx.annotation.Nullable;
+
 import com.example.sampleapplicationproject.R;
 
 public class CustomAccountSelectionWidget extends LinearLayout {
