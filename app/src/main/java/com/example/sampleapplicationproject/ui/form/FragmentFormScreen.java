@@ -145,11 +145,9 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
                 transaction.replace(R.id.fragment_container, someFragment); // give your fragment container id in first parameter
                 transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
                 transaction.commit();
-
-                //toast message for try
-                //new AlertDialog.Builder(getContext()).setTitle("touched").show();
             }
         });
+
         return setContentView;
     }
 

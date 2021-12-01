@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements
     public DrawerLayout drawer;
     @BindView(R.id.nav_view)
     NavigationView navigationView;
+    public final static String TAG_FORM_SCREEN = "form fragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements
                 break;
             case R.id.nav_form_screen:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new
-                        FragmentFormScreen()).commit();
+                        FragmentFormScreen(), TAG_FORM_SCREEN).commit();
                 toolbar.setTitle("Form Ekranı");
                 break;
         }

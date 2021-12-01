@@ -35,8 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextFormSurname"
-            android:layout_marginStart="@dimen/unit8dp"
-            android:layout_marginTop="@dimen/unit8dp"
+            style="@style/button"
             android:text="@string/dogum_gunu_tarihinizi_seciniz" />
 
         <!--text view for show birthday-->
@@ -88,8 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_below="@id/buttonFormAdd"
-            android:layout_marginStart="@dimen/unit8dp"
-            android:layout_marginTop="@dimen/unit8dp"
+            style="@style/button"
             android:text="@string/kaydet" />
 
         <!--recycler view to display our data-->

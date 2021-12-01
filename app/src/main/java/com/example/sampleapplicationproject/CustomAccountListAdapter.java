@@ -1,5 +1,7 @@
 package com.example.sampleapplicationproject;
 
+import static com.example.sampleapplicationproject.ui.MainActivity.TAG_FORM_SCREEN;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +15,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sampleapplicationproject.models.CustomAccountSelectionModel;
-import com.example.sampleapplicationproject.ui.form.FragmentFormScreen;
 
 import java.util.ArrayList;
 
@@ -71,7 +72,8 @@ public class CustomAccountListAdapter extends RecyclerView.Adapter<CustomAccount
             bundle.putString("AccountNumber", String.valueOf(arrayList.get(position).getAccountNumberSelection()));
             bundle.putString("Balance", String.valueOf(arrayList.get(position).getBalanceSelection()));
 
-            Fragment fragmentNext = new FragmentFormScreen();
+            //Fragment fragmentNext = new FragmentFormScreen();
+            Fragment fragmentNext = ((FragmentActivity) context).getSupportFragmentManager().findFragmentByTag(TAG_FORM_SCREEN);
             fragmentNext.setArguments(bundle);
 
             ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
