@@ -59,21 +59,8 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
     TextView textViewBirthdayEdit;
     @BindView(R.id.imageViewProfilePhoto)
     ImageView imageViewProfilePhotoEdit;
-    @BindView(R.id.buttonFormAdd)
-    Button buttonFormAddEdit;
-    @BindView(R.id.buttonFormSave)
-    Button buttonFormSaveEdit;
-    @BindView(R.id.recyclerViewNameSurname)
-    RecyclerView recyclerViewNameSurnameEdit;
     @BindView(R.id.customAccountBase)
     CustomAccountWidget customAccountBase;
-
-    // variable for our adapter class and array list
-    private NameSurnameAdapter adapter;
-    private ArrayList<NameSurnameModel> nameSurnameModalArrayList;
-
-    //variable for profile photo
-    private Uri imageViewProfilePhotoUri;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,34 +77,7 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // calling method to load data from shared prefs.
-        loadData();
 
-        // calling method to build recycler view.
-        buildRecyclerView();
-
-        // on click listener for adding and saving data to array list.
-        buttonFormAddEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // below line is use to add data to array list.
-                nameSurnameModalArrayList.add(new NameSurnameModel(editTextFormNameEdit.getText().
-                        toString(), editTextFormSurnameEdit.getText().toString()));
-                // notifying adapter when new data added.
-                adapter.notifyItemInserted(nameSurnameModalArrayList.size());
-            }
-        });
-
-        // on click listener for saving data in shared preferences.
-        buttonFormSaveEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // calling method to save data in shared prefs.
-                saveData();
-            }
-        });
-
-        //button for birthday
         buttonBirthdayEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -208,75 +168,5 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         String date = "Doğum günü tarihiniz: " + dayOfMonth + "." + (month + 1) + "." + year;
         textViewBirthdayEdit.setText(date);
-    }
-
-    private void buildRecyclerView() {
-
-        // initializing our adapter class.
-        adapter = new NameSurnameAdapter(nameSurnameModalArrayList, getContext());
-
-        // adding layout manager to our recycler view.
-        LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        //courseRV.setHasFixedSize(true);
-
-        // setting layout manager to our recycler view.
-        recyclerViewNameSurnameEdit.setLayoutManager(manager);
-
-        // setting adapter to our recycler view.
-        recyclerViewNameSurnameEdit.setAdapter(adapter);
-    }
-
-    private void loadData() {
-        // method to load arraylist from shared prefs initializing our shared prefs with name as
-        // shared preferences.
-        SharedPreferences sharedPreferences = this.getActivity().
-                getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
-
-        // creating a variable for gson.
-        Gson gson = new Gson();
-
-        // below line is to get to string present from our shared prefs if not present setting
-        // it as null.
-        String json = sharedPreferences.getString("courses", null);
-
-        // below line is to get the type of our array list.
-        Type type = new TypeToken<ArrayList<NameSurnameModel>>() {
-        }.getType();
-
-        /// in below line we are getting data from gson and saving it to our array list
-        nameSurnameModalArrayList = gson.fromJson(json, type);
-
-        // checking below if the array list is empty or not
-        if (nameSurnameModalArrayList == null) {
-            // if the array list is empty
-            // creating a new array list.
-            nameSurnameModalArrayList = new ArrayList<>();
-        }
-    }
-
-    private void saveData() {
-        // method to load arraylist from shared prefs initializing our shared prefs with name as
-        // shared preferences.
-        SharedPreferences sharedPreferences = this.getActivity().
-                getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
-
-        // creating a variable for editor to store data in shared preferences.
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        // creating a new variable for gson.
-        Gson gson2 = new Gson();
-
-        // getting data from gson and storing it in a string.
-        String json2 = gson2.toJson(nameSurnameModalArrayList);
-
-        // below line is to save data in shared prefs in the form of string.
-        editor.putString("courses", json2);
-
-        // below line is to apply changes and save data in shared prefs.
-        editor.apply();
-
-        // after saving data we are displaying a toast message.
-        Toast.makeText(getActivity(), "Saved Array List to Shared preferences. ",
-                Toast.LENGTH_SHORT).show();
     }
 }

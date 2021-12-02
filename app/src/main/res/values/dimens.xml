@@ -4,6 +4,7 @@
     <dimen name="unit30dp">30dp</dimen>
     <dimen name="unit100dp">100dp</dimen>
     <dimen name="unit18sp">18sp</dimen>
+    <dimen name="unit15sp">15sp</dimen>
     <dimen name="unit20sp">20sp</dimen>
     <dimen name="unit16dp">16dp</dimen>
     <dimen name="unit176dp">176dp</dimen>

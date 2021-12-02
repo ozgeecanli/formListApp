@@ -32,10 +32,10 @@
         <!--button for pick a birthday-->
         <Button
             android:id="@+id/buttonBirthday"
-            android:layout_width="wrap_content"
+            style="@style/button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextFormSurname"
-            style="@style/button"
             android:text="@string/dogum_gunu_tarihinizi_seciniz" />
 
         <!--text view for show birthday-->
@@ -70,34 +70,6 @@
             android:layout_marginStart="@dimen/unit8dp"
             android:layout_marginTop="@dimen/unit8dp"
             android:background="@color/custom_account_widget" />
-
-        <!--button for adding data to recycler view-->
-        <Button
-            android:id="@+id/buttonFormAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/customAccountBase"
-            android:layout_marginStart="@dimen/unit8dp"
-            android:layout_marginTop="@dimen/unit8dp"
-            android:text="@string/ekle" />
-
-        <!--button for saving data to recycler view-->
-        <Button
-            android:id="@+id/buttonFormSave"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/buttonFormAdd"
-            style="@style/button"
-            android:text="@string/kaydet" />
-
-        <!--recycler view to display our data-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewNameSurname"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/buttonFormSave"
-            android:layout_marginStart="@dimen/unit8dp"
-            android:layout_marginTop="@dimen/unit8dp" />
 
     </RelativeLayout>
 
