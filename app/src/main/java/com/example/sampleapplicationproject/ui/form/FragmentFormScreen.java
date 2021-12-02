@@ -4,7 +4,6 @@ import static android.app.Activity.RESULT_OK;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -20,28 +19,18 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.content.SharedPreferences;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sampleapplicationproject.NameSurnameAdapter;
 import com.example.sampleapplicationproject.R;
 import com.example.sampleapplicationproject.models.CustomAccountModel;
-import com.example.sampleapplicationproject.models.NameSurnameModel;
 import com.example.sampleapplicationproject.widgets.CustomAccountWidget;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import butterknife.BindView;
