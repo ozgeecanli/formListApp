@@ -49,7 +49,6 @@ import butterknife.ButterKnife;
 
 public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnDateSetListener {
 
-    // creating variables for our ui components.
     @BindView(R.id.editTextFormName)
     EditText editTextFormNameEdit;
     @BindView(R.id.editTextFormSurname)
@@ -80,12 +79,17 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
         View setContentView = inflater.inflate(R.layout.fragment_form_screen, container,
                 false);
 
         ButterKnife.bind(this, setContentView);
 
+        return setContentView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         // calling method to load data from shared prefs.
         loadData();
 
@@ -147,8 +151,6 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
                 transaction.commit();
             }
         });
-
-        return setContentView;
     }
 
     @Override
