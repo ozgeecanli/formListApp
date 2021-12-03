@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.example.sampleapplicationproject.models.CustomAccountModel;
 import com.example.sampleapplicationproject.R;
+import com.example.sampleapplicationproject.models.CustomAccountModel;
 
 public class CustomAccountWidget extends LinearLayout {
 
@@ -17,6 +17,8 @@ public class CustomAccountWidget extends LinearLayout {
     TextView textViewDepartmentNameInit;
     TextView textViewAccountNumberInit;
     TextView textViewBalanceInit;
+
+    CustomAccountModel selectedAccount;
 
     public CustomAccountWidget(Context context) {
         super(context);
@@ -49,9 +51,19 @@ public class CustomAccountWidget extends LinearLayout {
 
     //selected accounts info set by setAccount
     public void setAccount(CustomAccountModel customAccount) {
+
+        if (customAccount == null) {
+            return;
+        }
+
+        selectedAccount = customAccount;
         textViewAccountNameInit.setText(customAccount.getAccountName());
         textViewDepartmentNameInit.setText(customAccount.getDepartmentName());
         textViewAccountNumberInit.setText(String.valueOf(customAccount.getAccountNumber()));
         textViewBalanceInit.setText(String.valueOf(customAccount.getBalance()));
+    }
+
+    public CustomAccountModel getSelectedAccount() {
+        return selectedAccount;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.sampleapplicationproject.ui.form;
 
 import static android.app.Activity.RESULT_OK;
+import static com.example.sampleapplicationproject.ui.form.FragmentCustomAccountList.SELECTED_ACCOUNT;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
@@ -8,13 +9,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +19,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.sampleapplicationproject.R;
@@ -35,6 +34,7 @@ import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnDateSetListener {
 
@@ -50,6 +50,23 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
     ImageView imageViewProfilePhotoEdit;
     @BindView(R.id.customAccountBase)
     CustomAccountWidget customAccountBase;
+
+    @OnClick(R.id.imageViewProfilePhoto)
+    public void onClickImageView() {
+        if (ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        } else {
+            Intent photo = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(photo, 2);
+        }
+    }
+
+    @OnClick(R.id.buttonBirthday)
+    public void onClickButtonBirthday() {
+        showDataPickerDialog();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,27 +84,6 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        buttonBirthdayEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDataPickerDialog();
-            }
-        });
-
-        //for profile photo
-        imageViewProfilePhotoEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(getContext(),
-                        Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(getActivity(),
-                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-                } else {
-                    Intent photo = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(photo, 2);
-                }
-            }
-        });
 
         //click widget custom account
         customAccountBase.setOnClickListener(new View.OnClickListener() {
@@ -107,12 +103,8 @@ public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnD
         super.onResume();
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            String selectedAccountName = bundle.getString("AccountName");
-            String selectedDepartmentName = bundle.getString("DepartmentName");
-            int selectedAccountNumber = Integer.parseInt(bundle.getString("AccountNumber"));
-            double selectedBalance = Double.parseDouble(bundle.getString("Balance"));
-
-            customAccountBase.setAccount(new CustomAccountModel(selectedAccountName, selectedDepartmentName, selectedAccountNumber, selectedBalance));
+            CustomAccountModel selectedAccount = (CustomAccountModel) bundle.getSerializable(SELECTED_ACCOUNT);
+            customAccountBase.setAccount(selectedAccount);
         }
     }
 

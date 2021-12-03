@@ -1,5 +1,8 @@
 package com.example.sampleapplicationproject.ui;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,12 +10,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-
-import com.example.sampleapplicationproject.ui.formlist.FragmentFormListScreen;
-import com.example.sampleapplicationproject.ui.form.FragmentFormScreen;
 import com.example.sampleapplicationproject.R;
+import com.example.sampleapplicationproject.ui.form.FragmentFormScreen;
+import com.example.sampleapplicationproject.ui.formlist.FragmentFormListScreen;
 import com.google.android.material.navigation.NavigationView;
 
 import butterknife.BindView;
