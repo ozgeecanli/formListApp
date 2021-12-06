@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 
 import com.example.sampleapplicationproject.R;
 
-public class FragmentHome extends BaseFragment {
+public class BaseFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_base, container, false);
     }
 }

@@ -12,11 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.sampleapplicationproject.R;
+import com.example.sampleapplicationproject.ui.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FragmentFormListScreen extends Fragment {
+public class FragmentFormListScreen extends BaseFragment {
 
     @BindView(R.id.recyclerViewFormList)
     RecyclerView recyclerViewFormListEdit;

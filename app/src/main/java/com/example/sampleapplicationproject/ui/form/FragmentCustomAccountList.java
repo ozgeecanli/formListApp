@@ -17,13 +17,14 @@ import com.example.sampleapplicationproject.CustomAccountListAdapter;
 import com.example.sampleapplicationproject.OnSelectAccountListener;
 import com.example.sampleapplicationproject.R;
 import com.example.sampleapplicationproject.models.CustomAccountModel;
+import com.example.sampleapplicationproject.ui.BaseFragment;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FragmentCustomAccountList extends Fragment {
+public class FragmentCustomAccountList extends BaseFragment {
 
     @BindView(R.id.recyclerViewAccountList)
     RecyclerView recyclerViewSelection;

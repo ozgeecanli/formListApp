@@ -28,6 +28,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.sampleapplicationproject.R;
 import com.example.sampleapplicationproject.models.CustomAccountModel;
+import com.example.sampleapplicationproject.ui.BaseFragment;
 import com.example.sampleapplicationproject.widgets.CustomAccountWidget;
 
 import java.util.Calendar;
@@ -36,7 +37,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class FragmentFormScreen extends Fragment implements DatePickerDialog.OnDateSetListener {
+public class FragmentFormScreen extends BaseFragment implements DatePickerDialog.OnDateSetListener {
 
     @BindView(R.id.editTextFormName)
     EditText editTextFormNameEdit;
