@@ -45,7 +45,6 @@ public class CustomAccountListAdapter extends RecyclerView.Adapter<CustomAccount
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        // creating variables for our views.
         private final TextView textViewAccountNameView;
         private final TextView textViewDepartmentNameView;
         private final TextView textViewAccountNumberView;
@@ -67,5 +66,4 @@ public class CustomAccountListAdapter extends RecyclerView.Adapter<CustomAccount
             }
         }
     }
-
 }
