@@ -1,31 +1,25 @@
 package com.example.sampleapplicationproject;
 
-import static com.example.sampleapplicationproject.ui.MainActivity.TAG_FORM_SCREEN;
-
-import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sampleapplicationproject.models.CustomAccountSelectionModel;
+import com.example.sampleapplicationproject.models.CustomAccountModel;
 
 import java.util.ArrayList;
 
 public class CustomAccountListAdapter extends RecyclerView.Adapter<CustomAccountListAdapter.ViewHolder> {
 
-    Context context;
-    ArrayList<CustomAccountSelectionModel> arrayList;
+    ArrayList<CustomAccountModel> arrayList;
+    OnSelectAccountListener listener;
 
-    public CustomAccountListAdapter(Context context, ArrayList<CustomAccountSelectionModel> arrayList) {
-        this.context = context;
+    public CustomAccountListAdapter(ArrayList<CustomAccountModel> arrayList, OnSelectAccountListener listener) {
         this.arrayList = arrayList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -37,10 +31,11 @@ public class CustomAccountListAdapter extends RecyclerView.Adapter<CustomAccount
 
     @Override
     public void onBindViewHolder(@NonNull CustomAccountListAdapter.ViewHolder holder, int position) {
-        holder.textViewAccountNameView.setText(arrayList.get(position).getAccountNameSelection());
-        holder.textViewDepartmentNameView.setText(arrayList.get(position).getDepartmentNameSelection());
-        holder.textViewAccountNumberView.setText(String.valueOf(arrayList.get(position).getAccountNumberSelection()));
-        holder.textViewBalanceView.setText(String.valueOf(arrayList.get(position).getBalanceSelection()));
+        CustomAccountModel accountModel = arrayList.get(position);
+        holder.textViewAccountNameView.setText(accountModel.getAccountName());
+        holder.textViewDepartmentNameView.setText(accountModel.getDepartmentName());
+        holder.textViewAccountNumberView.setText(String.valueOf(accountModel.getAccountNumber()));
+        holder.textViewBalanceView.setText(String.valueOf(accountModel.getBalance()));
     }
 
     @Override
@@ -51,8 +46,10 @@ public class CustomAccountListAdapter extends RecyclerView.Adapter<CustomAccount
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         // creating variables for our views.
-        private TextView textViewAccountNameView, textViewDepartmentNameView, textViewAccountNumberView,
-                textViewBalanceView;
+        private final TextView textViewAccountNameView;
+        private final TextView textViewDepartmentNameView;
+        private final TextView textViewAccountNumberView;
+        private final TextView textViewBalanceView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -65,19 +62,10 @@ public class CustomAccountListAdapter extends RecyclerView.Adapter<CustomAccount
 
         @Override
         public void onClick(View v) {
-            int position = getAdapterPosition();
-            Bundle bundle = new Bundle();
-            bundle.putString("AccountName", arrayList.get(position).getAccountNameSelection());
-            bundle.putString("DepartmentName", arrayList.get(position).getDepartmentNameSelection());
-            bundle.putString("AccountNumber", String.valueOf(arrayList.get(position).getAccountNumberSelection()));
-            bundle.putString("Balance", String.valueOf(arrayList.get(position).getBalanceSelection()));
-
-            //Fragment fragmentNext = new FragmentFormScreen();
-            Fragment fragmentNext = ((FragmentActivity) context).getSupportFragmentManager().findFragmentByTag(TAG_FORM_SCREEN);
-            fragmentNext.setArguments(bundle);
-
-            ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
-                    replace(R.id.fragment_container, fragmentNext).commit();
+            if (listener != null) {
+                listener.onAccountSelected(arrayList.get(getAdapterPosition()));
+            }
         }
     }
+
 }
