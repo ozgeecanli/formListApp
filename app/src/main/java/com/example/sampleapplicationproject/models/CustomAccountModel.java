@@ -1,6 +1,8 @@
 package com.example.sampleapplicationproject.models;
 
-public class CustomAccountModel {
+import java.io.Serializable;
+
+public class CustomAccountModel implements Serializable {
 
     String accountName;
     String departmentName;
