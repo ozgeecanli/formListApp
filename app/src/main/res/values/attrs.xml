@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <declare-styleable name="PhoneNumberEditText">
+        <attr name="editTextHint" format="string" />
+        <attr name="editTextNumber" format="integer" />
+    </declare-styleable>
 </resources>

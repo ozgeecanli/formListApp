@@ -49,8 +49,8 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     TextView textViewBirthdayEdit;
     @BindView(R.id.imageViewProfilePhoto)
     ImageView imageViewProfilePhotoEdit;
-    @BindView(R.id.customAccountBase)
-    CustomAccountWidget customAccountBase;
+    @BindView(R.id.customAccountView)
+    CustomAccountWidget customAccountView;
 
     @OnClick(R.id.imageViewProfilePhoto)
     public void onClickImageView() {
@@ -87,7 +87,7 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
 
 
         //click widget custom account
-        customAccountBase.setOnClickListener(new View.OnClickListener() {
+        customAccountView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment someFragment = new FragmentCustomAccountList();
@@ -105,7 +105,7 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             CustomAccountModel selectedAccount = (CustomAccountModel) bundle.getSerializable(SELECTED_ACCOUNT);
-            customAccountBase.setAccount(selectedAccount);
+            customAccountView.setAccount(selectedAccount);
         }
     }
 

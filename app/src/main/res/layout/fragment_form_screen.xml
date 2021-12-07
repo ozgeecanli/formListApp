@@ -63,13 +63,18 @@
 
         <!-- null account for custom account-->
         <com.example.sampleapplicationproject.widgets.CustomAccountWidget
-            android:id="@+id/customAccountBase"
+            android:id="@+id/customAccountView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/imageViewProfilePhoto"
             android:layout_marginStart="@dimen/unit8dp"
             android:layout_marginTop="@dimen/unit8dp"
             android:background="@color/custom_account_widget" />
+
+        <com.example.sampleapplicationproject.PhoneNumberEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customAccountView" />
 
     </RelativeLayout>
 
