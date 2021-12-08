@@ -25,4 +25,6 @@
     <string name="hesap_no_iki_nokta">Hesap No:</string>
     <string name="bakiye_iki_nokta">Bakiye:</string>
     <string name="bilgi_yer_almamaktadir">Bilgi yer almamaktadır.</string>
+    <string name="kadin">Kadın</string>
+    <string name="erkek">Erkek</string>
 </resources>

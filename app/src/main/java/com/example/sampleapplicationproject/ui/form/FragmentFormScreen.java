@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,6 +53,9 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     ImageView imageViewProfilePhotoEdit;
     @BindView(R.id.customAccountView)
     CustomAccountWidget customAccountView;
+    @BindView(R.id.radioButtonGender)
+    RadioGroup radioGroupGender;
+    boolean genderValue;
 
     @OnClick(R.id.imageViewProfilePhoto)
     public void onClickImageView() {
@@ -85,7 +90,6 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         //click widget custom account
         customAccountView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +101,22 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
                 transaction.commit();
             }
         });
+
+        //Gender selection
+        radioGroupGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.radioButtonFemale:
+                        genderValue = true;
+                        break;
+                    case R.id.radioButtonMale:
+                        genderValue = false;
+                        break;
+                }
+            }
+        });
+
     }
 
     @Override
