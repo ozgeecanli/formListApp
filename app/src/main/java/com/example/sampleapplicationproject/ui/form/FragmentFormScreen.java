@@ -14,10 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -33,6 +33,7 @@ import com.example.sampleapplicationproject.models.CustomAccountModel;
 import com.example.sampleapplicationproject.ui.BaseFragment;
 import com.example.sampleapplicationproject.widgets.CustomAccountWidget;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import butterknife.BindView;
@@ -56,6 +57,62 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     @BindView(R.id.radioButtonGender)
     RadioGroup radioGroupGender;
     boolean genderValue;
+    @BindView(R.id.checkBoxAccount1)
+    CheckBox checkBoxAccount1;
+    @BindView(R.id.checkBoxAccount2)
+    CheckBox checkBoxAccount2;
+    @BindView(R.id.checkBoxAccount3)
+    CheckBox checkBoxAccount3;
+    @BindView(R.id.checkBoxAccount4)
+    CheckBox checkBoxAccount4;
+    @BindView(R.id.checkBoxAccount5)
+    CheckBox checkBoxAccount5;
+    ArrayList<String> arrayListCheckBox;
+
+    @OnClick(R.id.checkBoxAccount1)
+    public void checkBoxAccount1OnClick() {
+        if (checkBoxAccount1.isChecked()) {
+            arrayListCheckBox.add(checkBoxAccount1.getText().toString());
+        } else {
+            arrayListCheckBox.remove(checkBoxAccount1.getText().toString());
+        }
+    }
+
+    @OnClick(R.id.checkBoxAccount2)
+    public void checkBoxAccount2OnClick() {
+        if (checkBoxAccount1.isChecked()) {
+            arrayListCheckBox.add(checkBoxAccount2.getText().toString());
+        } else {
+            arrayListCheckBox.remove(checkBoxAccount2.getText().toString());
+        }
+    }
+
+    @OnClick(R.id.checkBoxAccount3)
+    public void checkBoxAccount3OnClick() {
+        if (checkBoxAccount3.isChecked()) {
+            arrayListCheckBox.add(checkBoxAccount3.getText().toString());
+        } else {
+            arrayListCheckBox.remove(checkBoxAccount3.getText().toString());
+        }
+    }
+
+    @OnClick(R.id.checkBoxAccount4)
+    public void checkBoxAccount4OnClick() {
+        if (checkBoxAccount4.isChecked()) {
+            arrayListCheckBox.add(checkBoxAccount4.getText().toString());
+        } else {
+            arrayListCheckBox.remove(checkBoxAccount4.getText().toString());
+        }
+    }
+
+    @OnClick(R.id.checkBoxAccount5)
+    public void checkBoxAccount5OnClick() {
+        if (checkBoxAccount5.isChecked()) {
+            arrayListCheckBox.add(checkBoxAccount5.getText().toString());
+        } else {
+            arrayListCheckBox.remove(checkBoxAccount5.getText().toString());
+        }
+    }
 
     @OnClick(R.id.imageViewProfilePhoto)
     public void onClickImageView() {
@@ -89,6 +146,9 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //create arraylist for check account
+        arrayListCheckBox = new ArrayList<>();
 
         //click widget custom account
         customAccountView.setOnClickListener(new View.OnClickListener() {

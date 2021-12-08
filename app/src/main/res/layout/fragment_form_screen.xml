@@ -99,6 +99,41 @@
                 android:text="@string/erkek" />
         </RadioGroup>
 
+        <CheckBox
+            android:id="@+id/checkBoxAccount1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioButtonGender"
+            android:text="@string/vadeli_hesap" />
+
+        <CheckBox
+            android:id="@+id/checkBoxAccount2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBoxAccount1"
+            android:text="@string/vadesiz_hesap" />
+
+        <CheckBox
+            android:id="@+id/checkBoxAccount3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBoxAccount2"
+            android:text="@string/altin_hesap" />
+
+        <CheckBox
+            android:id="@+id/checkBoxAccount4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBoxAccount3"
+            android:text="@string/doviz_hesap" />
+
+        <CheckBox
+            android:id="@+id/checkBoxAccount5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBoxAccount4"
+            android:text="@string/portfoy_hesap" />
+
     </RelativeLayout>
 
 </ScrollView>

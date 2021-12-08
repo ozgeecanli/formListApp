@@ -27,4 +27,9 @@
     <string name="bilgi_yer_almamaktadir">Bilgi yer almamaktadır.</string>
     <string name="kadin">Kadın</string>
     <string name="erkek">Erkek</string>
+    <string name="vadeli_hesap">Vadeli Hesap</string>
+    <string name="vadesiz_hesap">Vadesiz Hesap</string>
+    <string name="altin_hesap">Altın Hesap</string>
+    <string name="doviz_hesap">Döviz hesap</string>
+    <string name="portfoy_hesap">Portföy Hesap</string>
 </resources>
