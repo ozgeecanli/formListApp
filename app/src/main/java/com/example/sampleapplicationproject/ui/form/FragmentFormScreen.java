@@ -7,9 +7,15 @@ import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -75,9 +82,12 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     CheckBox checkBoxAccount5;
     @BindView(R.id.phoneNumberEditText)
     PhoneNumberEditText phoneNumberEditText;
+    @BindView(R.id.textViewContract)
+    TextView textViewContract;
+
+    String ContractText = "Sözleşmeyi okudum ve onaylıyorum.";
 
     boolean checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
-
     int genderValue = -1;
     ArrayList<String> arrayListCheckBox;
     Uri uri;
@@ -152,6 +162,11 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     @OnClick(R.id.buttonBirthday)
     public void onClickButtonBirthday() {
         showDataPickerDialog();
+    }
+
+    @OnClick(R.id.textViewContract)
+    public void onClickTextViewContract() {
+        contractClickable();
     }
 
     @Override
@@ -242,7 +257,6 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
                 checkBoxAccount5OnClick();
             }
         }
-
     }
 
     @Override
@@ -302,5 +316,27 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         String date = dayOfMonth + "." + (month + 1) + "." + year;
         textViewBirthdayEdit.setText(date);
+    }
+
+    //contract
+    public void contractClickable() {
+        SpannableString spannableString = new SpannableString(ContractText);
+        ClickableSpan clickableSpan = new ClickableSpan() {
+
+            @Override
+            public void onClick(View widget) {
+                Toast.makeText(getActivity(), "Sözleşmeyi onayladınız.", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setColor(Color.BLUE);
+                ds.setUnderlineText(false);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 0, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textViewContract.setText(spannableString);
+        textViewContract.setMovementMethod(LinkMovementMethod.getInstance());
     }
 }

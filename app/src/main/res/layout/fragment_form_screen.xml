@@ -134,6 +134,14 @@
             android:layout_below="@+id/checkBoxAccount4"
             android:text="@string/portfoy_hesap" />
 
+        <TextView
+            android:id="@+id/textViewContract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBoxAccount5"
+            android:text="@string/sozlesmeyi_okudum_ve_onayliyorum"
+            android:textSize="@dimen/unit20sp" />
+
     </RelativeLayout>
 
 </ScrollView>
