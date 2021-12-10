@@ -1,7 +1,5 @@
 package com.example.sampleapplicationproject.ui.form;
 
-import static com.example.sampleapplicationproject.ui.MainActivity.TAG_FORM_SCREEN;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,7 +83,7 @@ public class FragmentCustomAccountList extends BaseFragment {
         Bundle bundle = new Bundle();
         bundle.putSerializable(SELECTED_ACCOUNT, accountModel);
 
-        Fragment fragmentNext = getActivity().getSupportFragmentManager().findFragmentByTag(TAG_FORM_SCREEN);
+        Fragment fragmentNext = new FragmentFormScreen();
         fragmentNext.setArguments(bundle);
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentNext).commit();
     }

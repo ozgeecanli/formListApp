@@ -18,6 +18,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -28,6 +29,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.sampleapplicationproject.FormScreenData;
+import com.example.sampleapplicationproject.PhoneNumberEditText;
 import com.example.sampleapplicationproject.R;
 import com.example.sampleapplicationproject.models.CustomAccountModel;
 import com.example.sampleapplicationproject.ui.BaseFragment;
@@ -56,7 +59,10 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     CustomAccountWidget customAccountView;
     @BindView(R.id.radioButtonGender)
     RadioGroup radioGroupGender;
-    boolean genderValue;
+    @BindView(R.id.radioButtonFemale)
+    RadioButton radioGroupFemale;
+    @BindView(R.id.radioButtonMale)
+    RadioButton radioButtonMale;
     @BindView(R.id.checkBoxAccount1)
     CheckBox checkBoxAccount1;
     @BindView(R.id.checkBoxAccount2)
@@ -67,23 +73,34 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     CheckBox checkBoxAccount4;
     @BindView(R.id.checkBoxAccount5)
     CheckBox checkBoxAccount5;
+    @BindView(R.id.phoneNumberEditText)
+    PhoneNumberEditText phoneNumberEditText;
+
+    boolean checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
+
+    int genderValue = -1;
     ArrayList<String> arrayListCheckBox;
+    Uri uri;
 
     @OnClick(R.id.checkBoxAccount1)
     public void checkBoxAccount1OnClick() {
         if (checkBoxAccount1.isChecked()) {
             arrayListCheckBox.add(checkBoxAccount1.getText().toString());
+            checkBox1 = true;
         } else {
             arrayListCheckBox.remove(checkBoxAccount1.getText().toString());
+            checkBox1 = false;
         }
     }
 
     @OnClick(R.id.checkBoxAccount2)
     public void checkBoxAccount2OnClick() {
-        if (checkBoxAccount1.isChecked()) {
+        if (checkBoxAccount2.isChecked()) {
             arrayListCheckBox.add(checkBoxAccount2.getText().toString());
+            checkBox2 = true;
         } else {
             arrayListCheckBox.remove(checkBoxAccount2.getText().toString());
+            checkBox2 = false;
         }
     }
 
@@ -91,8 +108,10 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     public void checkBoxAccount3OnClick() {
         if (checkBoxAccount3.isChecked()) {
             arrayListCheckBox.add(checkBoxAccount3.getText().toString());
+            checkBox3 = true;
         } else {
             arrayListCheckBox.remove(checkBoxAccount3.getText().toString());
+            checkBox3 = false;
         }
     }
 
@@ -100,8 +119,10 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     public void checkBoxAccount4OnClick() {
         if (checkBoxAccount4.isChecked()) {
             arrayListCheckBox.add(checkBoxAccount4.getText().toString());
+            checkBox4 = true;
         } else {
             arrayListCheckBox.remove(checkBoxAccount4.getText().toString());
+            checkBox4 = false;
         }
     }
 
@@ -109,8 +130,10 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     public void checkBoxAccount5OnClick() {
         if (checkBoxAccount5.isChecked()) {
             arrayListCheckBox.add(checkBoxAccount5.getText().toString());
+            checkBox5 = true;
         } else {
             arrayListCheckBox.remove(checkBoxAccount5.getText().toString());
+            checkBox5 = false;
         }
     }
 
@@ -168,10 +191,10 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.radioButtonFemale:
-                        genderValue = true;
+                        genderValue = 0;
                         break;
                     case R.id.radioButtonMale:
-                        genderValue = false;
+                        genderValue = 1;
                         break;
                 }
             }
@@ -186,7 +209,56 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         if (bundle != null) {
             CustomAccountModel selectedAccount = (CustomAccountModel) bundle.getSerializable(SELECTED_ACCOUNT);
             customAccountView.setAccount(selectedAccount);
+
+            editTextFormNameEdit.setText(FormScreenData.name);
+            editTextFormSurnameEdit.setText(FormScreenData.surname);
+            textViewBirthdayEdit.setText(FormScreenData.birthday);
+            //imageViewProfilePhotoEdit.setImageURI(Uri.parse(FormScreenData.photo));
+            phoneNumberEditText.setText(FormScreenData.phoneNumber);
+            genderValue = FormScreenData.gender;
+            if (genderValue == 0) {
+                radioGroupFemale.setChecked(true);
+            } else if (genderValue == 1) {
+                radioButtonMale.setChecked(false);
+            }
+            if (FormScreenData.checkBox1 == true) {
+                checkBoxAccount1.setChecked(true);
+                checkBoxAccount1OnClick();
+            }
+            if (FormScreenData.checkBox2 == true) {
+                checkBoxAccount2.setChecked(true);
+                checkBoxAccount2OnClick();
+            }
+            if (FormScreenData.checkBox3 == true) {
+                checkBoxAccount3.setChecked(true);
+                checkBoxAccount3OnClick();
+            }
+            if (FormScreenData.checkBox4 == true) {
+                checkBoxAccount4.setChecked(true);
+                checkBoxAccount4OnClick();
+            }
+            if (FormScreenData.checkBox5 == true) {
+                checkBoxAccount5.setChecked(true);
+                checkBoxAccount5OnClick();
+            }
         }
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        FormScreenData.name = editTextFormNameEdit.getText().toString();
+        FormScreenData.surname = editTextFormSurnameEdit.getText().toString();
+        FormScreenData.birthday = textViewBirthdayEdit.getText().toString();
+        //FormScreenData.photo = uri.toString();
+        FormScreenData.phoneNumber = phoneNumberEditText.getText().toString();
+        FormScreenData.gender = genderValue;
+        FormScreenData.checkBox1 = checkBox1;
+        FormScreenData.checkBox2 = checkBox2;
+        FormScreenData.checkBox3 = checkBox3;
+        FormScreenData.checkBox4 = checkBox4;
+        FormScreenData.checkBox5 = checkBox5;
     }
 
     //profile photo
@@ -208,7 +280,7 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
-            Uri uri = data.getData();
+            uri = data.getData();
             imageViewProfilePhotoEdit.setImageURI(uri);
         }
     }
@@ -228,7 +300,7 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     //birthday textview
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        String date = "Doğum günü tarihiniz: " + dayOfMonth + "." + (month + 1) + "." + year;
+        String date = dayOfMonth + "." + (month + 1) + "." + year;
         textViewBirthdayEdit.setText(date);
     }
 }

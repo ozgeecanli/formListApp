@@ -95,4 +95,12 @@ public class PhoneNumberEditText extends LinearLayout {
             }
         });
     }
+
+    public Editable getText() {
+        return editText.getText();
+    }
+
+    public void setText(String text) {
+        editText.setText(text);
+    }
 }
