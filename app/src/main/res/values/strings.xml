@@ -33,4 +33,5 @@
     <string name="doviz_hesap">Döviz hesap</string>
     <string name="portfoy_hesap">Portföy Hesap</string>
     <string name="sozlesmeyi_okudum_ve_onayliyorum">Sözleşmeyi okudum ve onaylıyorum.</string>
+    <string name="onayliyorum">Onaylıyorum.</string>
 </resources>

@@ -27,7 +27,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +36,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.sampleapplicationproject.FormScreenData;
+import com.example.sampleapplicationproject.FragmentContract;
 import com.example.sampleapplicationproject.PhoneNumberEditText;
 import com.example.sampleapplicationproject.R;
 import com.example.sampleapplicationproject.models.CustomAccountModel;
@@ -325,7 +325,10 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
 
             @Override
             public void onClick(View widget) {
-                Toast.makeText(getActivity(), "Sözleşmeyi onayladınız.", Toast.LENGTH_SHORT).show();
+                FragmentContract fragmentContract = new FragmentContract();
+                getActivity().getSupportFragmentManager().beginTransaction().
+                        replace(R.id.fragment_container, fragmentContract, null).
+                        addToBackStack(null).commit();
             }
 
             @Override
