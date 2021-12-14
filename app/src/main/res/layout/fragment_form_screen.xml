@@ -142,6 +142,19 @@
             android:text="@string/sozlesmeyi_okudum_ve_onayliyorum"
             android:textSize="@dimen/unit20sp" />
 
+        <Button
+            android:id="@+id/buttonContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewContract"
+            android:text="Devam et" />
+
+        <TextView
+            android:id="@+id/textViewAccountTypeKeep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
     </RelativeLayout>
 
 </ScrollView>

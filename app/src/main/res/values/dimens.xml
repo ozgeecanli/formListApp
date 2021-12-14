@@ -9,4 +9,5 @@
     <dimen name="unit16dp">16dp</dimen>
     <dimen name="unit176dp">176dp</dimen>
     <dimen name="unit10dp">10dp</dimen>
+    <dimen name="unit40dp">40dp</dimen>
 </resources>

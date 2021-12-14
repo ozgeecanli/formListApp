@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/layout/course_rv_item.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/layout/fragment_.xml" value="0.3120471014492754" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/fragment_confirm_screen.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/fragment_contains_account_list.xml" value="0.2453125" />
         <entry key="app/src/main/res/layout/fragment_contract.xml" value="0.32472826086956524" />
         <entry key="app/src/main/res/layout/fragment_custom_account_list.xml" value="0.3120471014492754" />
@@ -24,6 +25,7 @@
         <entry key="app/src/main/res/layout/fragment_recycler_view_account_list.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/item_account_component.xml" value="0.30842391304347827" />
         <entry key="app/src/main/res/layout/item_account_component_list.xml" value="0.2453125" />
+        <entry key="app/src/main/res/layout/item_person_all_info.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/name_surname_item.xml" value="0.3120471014492754" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/widget_account_component.xml" value="0.23958333333333334" />

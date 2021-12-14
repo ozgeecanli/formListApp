@@ -40,6 +40,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.sampleapplicationproject.FormScreenData;
+import com.example.sampleapplicationproject.FragmentConfirmScreen;
 import com.example.sampleapplicationproject.FragmentContract;
 import com.example.sampleapplicationproject.PhoneNumberEditText;
 import com.example.sampleapplicationproject.R;
@@ -91,6 +92,10 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     PhoneNumberEditText phoneNumberEditText;
     @BindView(R.id.textViewContract)
     TextView textViewContract;
+    @BindView(R.id.buttonContinue)
+    Button buttonContinue;
+    @BindView(R.id.textViewAccountTypeKeep)
+    TextView textViewAccountTypeKeep;
 
     String ContractText = "Sözleşmeyi okudum ve onaylıyorum.";
     boolean checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
@@ -100,6 +105,15 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     private static final int preqCode = 1;
     private static final int requestCode = 1;
     String imageStringUri = "";
+
+    @OnClick(R.id.buttonContinue)
+    public void onClickbuttonContinue() {
+        Fragment fragmentConfirm = new FragmentConfirmScreen();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragmentConfirm);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
     @OnClick(R.id.checkBoxAccount1)
     public void checkBoxAccount1OnClick() {
@@ -274,6 +288,7 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     @Override
     public void onPause() {
         super.onPause();
+        checkBoxKeep();
         FormScreenData.name = editTextFormNameEdit.getText().toString();
         FormScreenData.surname = editTextFormSurnameEdit.getText().toString();
         FormScreenData.birthday = textViewBirthdayEdit.getText().toString();
@@ -376,5 +391,14 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         spannableString.setSpan(clickableSpan, 0, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         textViewContract.setText(spannableString);
         textViewContract.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    public void checkBoxKeep() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String string : arrayListCheckBox) {
+            stringBuilder.append(string).append("-");
+            textViewAccountTypeKeep.setText(stringBuilder.toString());
+        }
+        FormScreenData.accountType = textViewAccountTypeKeep.getText().toString();
     }
 }

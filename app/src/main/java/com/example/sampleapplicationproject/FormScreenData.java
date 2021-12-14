@@ -6,6 +6,7 @@ public class FormScreenData {
     public static String birthday = "";
     public static String photo = "";
     public static String phoneNumber = "";
+    public static String accountType = "";
     public static int gender;
     public static boolean checkBox1 = false;
     public static boolean checkBox2 = false;
