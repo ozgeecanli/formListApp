@@ -7,6 +7,8 @@ import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,6 +47,9 @@ import com.example.sampleapplicationproject.models.CustomAccountModel;
 import com.example.sampleapplicationproject.ui.BaseFragment;
 import com.example.sampleapplicationproject.widgets.CustomAccountWidget;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -86,11 +93,13 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     TextView textViewContract;
 
     String ContractText = "Sözleşmeyi okudum ve onaylıyorum.";
-
     boolean checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
     int genderValue = -1;
     ArrayList<String> arrayListCheckBox;
     Uri uri;
+    private static final int preqCode = 1;
+    private static final int requestCode = 1;
+    String imageStringUri = "";
 
     @OnClick(R.id.checkBoxAccount1)
     public void checkBoxAccount1OnClick() {
@@ -194,8 +203,8 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
             public void onClick(View v) {
                 Fragment someFragment = new FragmentCustomAccountList();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, someFragment); // give your fragment container id in first parameter
-                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.replace(R.id.fragment_container, someFragment);
+                transaction.addToBackStack(null);
                 transaction.commit();
             }
         });
@@ -214,13 +223,13 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
                 }
             }
         });
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
         Bundle bundle = this.getArguments();
+
         if (bundle != null) {
             CustomAccountModel selectedAccount = (CustomAccountModel) bundle.getSerializable(SELECTED_ACCOUNT);
             customAccountView.setAccount(selectedAccount);
@@ -228,7 +237,10 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
             editTextFormNameEdit.setText(FormScreenData.name);
             editTextFormSurnameEdit.setText(FormScreenData.surname);
             textViewBirthdayEdit.setText(FormScreenData.birthday);
-            //imageViewProfilePhotoEdit.setImageURI(Uri.parse(FormScreenData.photo));
+            if (!FormScreenData.photo.isEmpty()) {
+                imageStringUri = FormScreenData.photo;
+                imageViewProfilePhotoEdit.setImageURI(Uri.parse(imageStringUri));
+            }
             phoneNumberEditText.setText(FormScreenData.phoneNumber);
             genderValue = FormScreenData.gender;
             if (genderValue == 0) {
@@ -265,7 +277,7 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         FormScreenData.name = editTextFormNameEdit.getText().toString();
         FormScreenData.surname = editTextFormSurnameEdit.getText().toString();
         FormScreenData.birthday = textViewBirthdayEdit.getText().toString();
-        //FormScreenData.photo = uri.toString();
+        FormScreenData.photo = imageStringUri;
         FormScreenData.phoneNumber = phoneNumberEditText.getText().toString();
         FormScreenData.gender = genderValue;
         FormScreenData.checkBox1 = checkBox1;
@@ -276,16 +288,18 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     }
 
     //profile photo
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == 1) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Intent photo = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(photo, 2);
+    private void checkAndRequestForPermission() {
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                Toast.makeText(getContext(), "Lütfen uygulama ayarlarından gerekli izinleri açınız", Toast.LENGTH_LONG).show();
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, preqCode);
+            } else {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, preqCode);
             }
+        } else {
+            Intent intentImage = new Intent(Intent.ACTION_GET_CONTENT);
+            intentImage.setType("image/*");
+            startActivityForResult(intentImage, requestCode);
         }
     }
 
@@ -293,10 +307,31 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
+        if (requestCode == requestCode && resultCode == RESULT_OK && data != null) {
             uri = data.getData();
+            imageStringUri = uri.toString();
             imageViewProfilePhotoEdit.setImageURI(uri);
+            InputStream imageStream = null;
+            Bitmap selectedImage;
+            //ImageUri to Bitmap
+            try {
+                imageStream = getActivity().getContentResolver().openInputStream(uri);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            selectedImage = BitmapFactory.decodeStream(imageStream);
+            String encodedImage = encodeImage(selectedImage);
         }
+    }
+
+    //Encode Bitmap in base64
+    private String encodeImage(Bitmap selectedImage) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String encImage = Base64.encodeToString(b, Base64.DEFAULT);
+
+        return encImage;
     }
 
     //select birthday on calendar

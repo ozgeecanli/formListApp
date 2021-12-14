@@ -24,11 +24,11 @@ public class FragmentContract extends BaseFragment implements OnPageScrollListen
 
     @OnClick(R.id.buttonConfirm)
     public void confirmButtonClick() {
-        Bundle bundle = new Bundle();
+       /* Bundle bundle = new Bundle();
         bundle.putInt("confirmContract", 1);
 
+        fragment.setArguments(bundle);*/
         BaseFragment fragment = new FragmentFormScreen();
-        fragment.setArguments(bundle);
 
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 fragment).commit();
