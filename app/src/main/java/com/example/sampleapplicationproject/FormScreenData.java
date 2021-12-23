@@ -1,5 +1,7 @@
 package com.example.sampleapplicationproject;
 
+import com.example.sampleapplicationproject.models.CustomAccountModel;
+
 public class FormScreenData {
     public static String name = "";
     public static String surname = "";
@@ -13,4 +15,5 @@ public class FormScreenData {
     public static boolean checkBox3 = false;
     public static boolean checkBox4 = false;
     public static boolean checkBox5 = false;
+    public static CustomAccountModel customAccountModel=null;
 }

@@ -3,12 +3,160 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="@dimen/unit16dp"
+    android:paddingTop="@dimen/unit16dp"
+    android:paddingRight="@dimen/unit16dp"
+    android:paddingBottom="@dimen/unit16dp"
     tools:context=".FragmentConfirmScreen">
+
+    <TextView
+        android:id="@+id/textViewConfirmName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adiniz_iki_nokta"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewConfirmNameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/textViewConfirmName"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewConfirmSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewConfirmNameEdit"
+        android:text="@string/soyadiniz_iki_nokta"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewConfirmSurnameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewConfirmNameEdit"
+        android:layout_toEndOf="@id/textViewConfirmSurname"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewConfirmBirthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewConfirmSurname"
+        android:text="@string/dogum_gunu_tarihiniz_iki_nokta"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewConfirmBirthdayEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewConfirmSurnameEdit"
+        android:layout_toEndOf="@id/textViewConfirmBirthday"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewConfirmPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewConfirmBirthday"
+        android:text="Fotoğrafınız: "
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/imageViewConfirmPhotoEdit"
+        android:layout_width="@dimen/unit100dp"
+        android:layout_height="@dimen/unit100dp"
+        android:layout_below="@+id/textViewConfirmBirthdayEdit"
+        android:layout_toEndOf="@+id/textViewConfirmPhoto"
+        android:src="@drawable/ic_person" />
+
+    <com.example.sampleapplicationproject.widgets.CustomAccountWidget
+        android:id="@+id/CustomAccountViewConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewConfirmPhotoEdit"
+        android:layout_marginStart="@dimen/unit8dp"
+        android:layout_marginTop="@dimen/unit8dp"
+        android:background="@color/custom_account_widget" />
+
+    <TextView
+        android:id="@+id/textViewConfirmPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CustomAccountViewConfirm"
+        android:text="@string/telefon_numaraniz_iki_nokta"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewConfirmPhoneNumberEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CustomAccountViewConfirm"
+        android:layout_toEndOf="@+id/textViewConfirmPhoneNumber"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewConfirmGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewConfirmPhoneNumber"
+        android:text="@string/cinsiyetiniz_iki_nokta"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewConfirmGenderEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewConfirmPhoneNumberEdit"
+        android:layout_toEndOf="@+id/textViewConfirmGender"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewConfirmAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewConfirmGender"
+        android:text="@string/hesap_seciminiz_iki_nokta"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/textViewConfirmAccountEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewConfirmGenderEdit"
+        android:layout_toEndOf="@+id/textViewConfirmAccount"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/buttonReturn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/unit8dp"
+        android:text="@string/geri_don" />
 
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/unit8dp"
         android:text="Kaydet" />
 
 </RelativeLayout>

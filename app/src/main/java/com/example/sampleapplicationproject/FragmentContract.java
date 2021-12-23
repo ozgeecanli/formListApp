@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.sampleapplicationproject.ui.BaseFragment;
 import com.example.sampleapplicationproject.ui.form.FragmentFormScreen;
 import com.github.barteksc.pdfviewer.PDFView;
@@ -24,11 +26,11 @@ public class FragmentContract extends BaseFragment implements OnPageScrollListen
 
     @OnClick(R.id.buttonConfirm)
     public void confirmButtonClick() {
-       /* Bundle bundle = new Bundle();
+        Bundle bundle = new Bundle();
         bundle.putInt("confirmContract", 1);
 
-        fragment.setArguments(bundle);*/
-        BaseFragment fragment = new FragmentFormScreen();
+        Fragment fragment = new FragmentFormScreen();
+        fragment.setArguments(bundle);
 
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 fragment).commit();

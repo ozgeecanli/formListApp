@@ -105,9 +105,12 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     private static final int preqCode = 1;
     private static final int requestCode = 1;
     String imageStringUri = "";
+    String encodedImage;
+    private String imageEncodedTemp;
 
     @OnClick(R.id.buttonContinue)
-    public void onClickbuttonContinue() {
+    public void onClickButtonContinue() {
+
         Fragment fragmentConfirm = new FragmentConfirmScreen();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragmentConfirm);
@@ -244,17 +247,24 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         super.onResume();
         Bundle bundle = this.getArguments();
 
-        if (bundle != null) {
+        if (bundle != null && bundle.getInt("confirmContract")==0) {
             CustomAccountModel selectedAccount = (CustomAccountModel) bundle.getSerializable(SELECTED_ACCOUNT);
             customAccountView.setAccount(selectedAccount);
+        }
 
+        if(bundle != null){
             editTextFormNameEdit.setText(FormScreenData.name);
             editTextFormSurnameEdit.setText(FormScreenData.surname);
             textViewBirthdayEdit.setText(FormScreenData.birthday);
-            if (!FormScreenData.photo.isEmpty()) {
-                imageStringUri = FormScreenData.photo;
-                imageViewProfilePhotoEdit.setImageURI(Uri.parse(imageStringUri));
+
+            if (FormScreenData.photo !=null) {
+                imageEncodedTemp = FormScreenData.photo;
+                byte[] decodedString = Base64.decode(imageEncodedTemp, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                imageViewProfilePhotoEdit.setImageBitmap(decodedByte);
+                encodedImage=FormScreenData.photo;
             }
+
             phoneNumberEditText.setText(FormScreenData.phoneNumber);
             genderValue = FormScreenData.gender;
             if (genderValue == 0) {
@@ -262,27 +272,32 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
             } else if (genderValue == 1) {
                 radioButtonMale.setChecked(false);
             }
-            if (FormScreenData.checkBox1 == true) {
+            if (FormScreenData.checkBox1) {
                 checkBoxAccount1.setChecked(true);
                 checkBoxAccount1OnClick();
             }
-            if (FormScreenData.checkBox2 == true) {
+            if (FormScreenData.checkBox2) {
                 checkBoxAccount2.setChecked(true);
                 checkBoxAccount2OnClick();
             }
-            if (FormScreenData.checkBox3 == true) {
+            if (FormScreenData.checkBox3) {
                 checkBoxAccount3.setChecked(true);
                 checkBoxAccount3OnClick();
             }
-            if (FormScreenData.checkBox4 == true) {
+            if (FormScreenData.checkBox4) {
                 checkBoxAccount4.setChecked(true);
                 checkBoxAccount4OnClick();
             }
-            if (FormScreenData.checkBox5 == true) {
+            if (FormScreenData.checkBox5) {
                 checkBoxAccount5.setChecked(true);
                 checkBoxAccount5OnClick();
             }
+            /*if (FormScreenData.customAccountModel != null) {
+                customAccountView.setAccount(FormScreenData.customAccountModel);
+            }*/
         }
+
+
     }
 
     @Override
@@ -292,7 +307,7 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         FormScreenData.name = editTextFormNameEdit.getText().toString();
         FormScreenData.surname = editTextFormSurnameEdit.getText().toString();
         FormScreenData.birthday = textViewBirthdayEdit.getText().toString();
-        FormScreenData.photo = imageStringUri;
+        FormScreenData.photo = encodedImage;
         FormScreenData.phoneNumber = phoneNumberEditText.getText().toString();
         FormScreenData.gender = genderValue;
         FormScreenData.checkBox1 = checkBox1;
@@ -300,6 +315,7 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         FormScreenData.checkBox3 = checkBox3;
         FormScreenData.checkBox4 = checkBox4;
         FormScreenData.checkBox5 = checkBox5;
+        FormScreenData.customAccountModel = customAccountView.getSelectedAccount();
     }
 
     //profile photo
@@ -335,7 +351,7 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
                 e.printStackTrace();
             }
             selectedImage = BitmapFactory.decodeStream(imageStream);
-            String encodedImage = encodeImage(selectedImage);
+            encodedImage = encodeImage(selectedImage);
         }
     }
 

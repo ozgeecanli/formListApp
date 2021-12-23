@@ -3,14 +3,22 @@ package com.example.sampleapplicationproject;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sampleapplicationproject.models.OnePersonAllInfoModel;
 import com.example.sampleapplicationproject.ui.BaseFragment;
+import com.example.sampleapplicationproject.ui.form.FragmentFormScreen;
+import com.example.sampleapplicationproject.widgets.CustomAccountWidget;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -23,18 +31,48 @@ import butterknife.OnClick;
 
 public class FragmentConfirmScreen extends BaseFragment {
 
+    @BindView(R.id.textViewConfirmNameEdit)
+    TextView textViewConfirmNameEdit;
+    @BindView(R.id.textViewConfirmSurnameEdit)
+    TextView textViewConfirmSurnameEdit;
+    @BindView(R.id.textViewConfirmBirthdayEdit)
+    TextView textViewConfirmBirthdayEdit;
+    @BindView(R.id.imageViewConfirmPhotoEdit)
+    ImageView imageViewConfirmPhotoEdit;
+    @BindView(R.id.textViewConfirmPhoneNumberEdit)
+    TextView textViewConfirmPhoneNumberEdit;
+    @BindView(R.id.textViewConfirmGenderEdit)
+    TextView textViewConfirmGenderEdit;
+    @BindView(R.id.textViewConfirmAccountEdit)
+    TextView textViewConfirmAccountEdit;
+    @BindView(R.id.CustomAccountViewConfirm)
+    CustomAccountWidget customAccountView;
+    @BindView(R.id.buttonReturn)
+    Button buttonReturn;
     @BindView(R.id.buttonSave)
     Button buttonSave;
 
     FormListScreenAdapter adapterFormListScreen;
     ArrayList<OnePersonAllInfoModel> arrayListOnePersonInfo;
-    String name, surname, birthday, photo, phoneNumber, accountType;
+    String name, surname, birthday, photo, photoBase64, phoneNumber, accountType;
     int gender;
 
     @OnClick(R.id.buttonSave)
     public void onClickbuttonSave() {
         saveData();
     }
+
+    @OnClick(R.id.buttonReturn)
+    public void onClickButtonReturn() {
+        Bundle bundle = new Bundle();
+        bundle.putInt("backButton", 1);
+        FragmentFormScreen fragmentFormScreen = new FragmentFormScreen();
+        fragmentFormScreen.setArguments(bundle);
+        getActivity().getSupportFragmentManager().beginTransaction().
+                replace(R.id.fragment_container, fragmentFormScreen, null).
+                commit();
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,11 +95,36 @@ public class FragmentConfirmScreen extends BaseFragment {
         phoneNumber = FormScreenData.phoneNumber;
         accountType = FormScreenData.accountType;
         gender = FormScreenData.gender;
+
+        textViewConfirmNameEdit.setText(name);
+        textViewConfirmSurnameEdit.setText(surname);
+        textViewConfirmBirthdayEdit.setText(birthday);
+
+        byte[] decodedString = Base64.decode(photo, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        imageViewConfirmPhotoEdit.setImageBitmap(decodedByte);
+
+        textViewConfirmPhoneNumberEdit.setText(phoneNumber);
+
+        if (gender == 0) {
+            textViewConfirmGenderEdit.setText("Kadın");
+
+        } else {
+            textViewConfirmGenderEdit.setText("Erkek");
+        }
+
+
+        textViewConfirmAccountEdit.setText(accountType);
+        customAccountView.setAccount(FormScreenData.customAccountModel);
+
+
     }
 
     public void insertItem(String name, String surname, String birthday, String photo,
                            String phoneNumber, int gender, String accountType) {
-        adapterFormListScreen = new FormListScreenAdapter(getContext(), arrayListOnePersonInfo);
+        adapterFormListScreen = new FormListScreenAdapter(getContext(), arrayListOnePersonInfo, onePersonAllInfoModel -> {
+            Toast.makeText(getContext(), "" + onePersonAllInfoModel.getName() + " " + onePersonAllInfoModel.getSurname() + " " + onePersonAllInfoModel.getBirthday(), Toast.LENGTH_SHORT).show();
+        });
         arrayListOnePersonInfo.add(new OnePersonAllInfoModel(name, surname, birthday, photo,
                 phoneNumber, gender, accountType));
     }

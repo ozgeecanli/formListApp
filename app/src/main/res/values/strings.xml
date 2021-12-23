@@ -35,4 +35,11 @@
     <string name="sozlesmeyi_okudum_ve_onayliyorum">Sözleşmeyi okudum ve onaylıyorum.</string>
     <string name="onayliyorum">Onaylıyorum.</string>
     <string name="ad_ve_soyad">Ad ve soyad</string>
+    <string name="soyadiniz_iki_nokta">Soyadınız:</string>
+    <string name="dogum_gunu_tarihiniz_iki_nokta">Doğum günü tarihiniz:</string>
+    <string name="geri_don">Geri Dön</string>
+    <string name="adiniz_iki_nokta">Adınız:</string>
+    <string name="cinsiyetiniz_iki_nokta">Cinsiyetiniz:</string>
+    <string name="telefon_numaraniz_iki_nokta">Telefon Numaranız:</string>
+    <string name="hesap_seciminiz_iki_nokta">Hesap seçiminiz:</string>
 </resources>

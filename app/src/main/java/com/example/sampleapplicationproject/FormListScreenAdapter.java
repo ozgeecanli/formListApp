@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +24,15 @@ public class FormListScreenAdapter extends RecyclerView.Adapter<FormListScreenAd
 
     Context context;
     ArrayList<OnePersonAllInfoModel> arrayList;
+    FormListScreenItemSelectedListener formListScreenItemSelectedListener;
 
-    public FormListScreenAdapter(Context context, ArrayList<OnePersonAllInfoModel> arrayList) {
+    public interface FormListScreenItemSelectedListener{
+        void onSelected(OnePersonAllInfoModel onePersonAllInfoModel);
+    }
+    public FormListScreenAdapter(Context context, ArrayList<OnePersonAllInfoModel> arrayList, FormListScreenItemSelectedListener formListScreenItemSelectedListener) {
         this.context = context;
         this.arrayList = arrayList;
+        this.formListScreenItemSelectedListener = formListScreenItemSelectedListener;
     }
 
     @NonNull
@@ -58,6 +64,7 @@ public class FormListScreenAdapter extends RecyclerView.Adapter<FormListScreenAd
         byte[] decodedString = Base64.decode(photo, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         holder.imageViewPhoto.setImageBitmap(decodedByte);
+        holder.itemView.setOnClickListener(view -> formListScreenItemSelectedListener.onSelected(arrayList.get(position)));
     }
 
     @Override

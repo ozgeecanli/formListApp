@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -65,7 +66,9 @@ public class FragmentFormListScreen extends BaseFragment {
     }
 
     private void buildRecyclerView() {
-        adapterFormListScreen = new FormListScreenAdapter(getContext(), arrayListOnePersonInfo);
+        adapterFormListScreen = new FormListScreenAdapter(getContext(), arrayListOnePersonInfo,onePersonAllInfoModel -> {
+            Toast.makeText(getContext(), "" + onePersonAllInfoModel.getName() + " " + onePersonAllInfoModel.getSurname() + " " + onePersonAllInfoModel.getBirthday(), Toast.LENGTH_SHORT).show();
+        });
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         recyclerViewFormListEdit.setHasFixedSize(true);
         recyclerViewFormListEdit.setLayoutManager(manager);
