@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.37592592592592594" />
+        <entry key="app/src/main/res/drawable/boarder.xml" value="0.335" />
         <entry key="app/src/main/res/drawable/ic_message.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.36574074074074076" />
         <entry key="app/src/main/res/drawable/ic_share.xml" value="0.2604166666666667" />
@@ -28,6 +29,7 @@
         <entry key="app/src/main/res/layout/item_person_all_info.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/name_surname_item.xml" value="0.3120471014492754" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/trying.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/widget_account_component.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/widget_account_selection_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/widget_phone_number.xml" value="0.225" />

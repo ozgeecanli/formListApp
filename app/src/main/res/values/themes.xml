@@ -20,9 +20,17 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="button">
+    <style name="Button">
         <item name="android:textSize">@dimen/unit15sp</item>
         <item name="android:layout_marginStart">@dimen/unit8dp</item>
         <item name="android:layout_marginTop">@dimen/unit8dp</item>
     </style>
+
+    <style name="InputView">
+        <item name="android:background">@drawable/bg_input_view</item>
+        <item name="android:padding">@dimen/unit8dp</item>
+
+    </style>
+
+
 </resources>

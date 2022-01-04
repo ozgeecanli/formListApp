@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:text="@string/adiniz_iki_nokta"
         android:textColor="@color/black"
+        android:layout_marginEnd="@dimen/unit8dp"
         android:textSize="18sp" />
 
     <TextView
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/textViewConfirmName"
         android:textColor="@color/black"
+        tools:text="Özge"
         android:textSize="18sp" />
 
     <TextView

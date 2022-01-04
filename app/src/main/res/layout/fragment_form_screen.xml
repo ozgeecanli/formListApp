@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--edit text for adding name-->
         <EditText
             android:id="@+id/editTextFormName"
+            style="@style/InputView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/unit8dp"
@@ -21,9 +21,9 @@
             android:layout_marginEnd="@dimen/unit8dp"
             android:hint="@string/adinizi_giriniz" />
 
-        <!--edit text for adding surname-->
         <EditText
             android:id="@+id/editTextFormSurname"
+            style="@style/InputView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextFormName"
@@ -31,16 +31,14 @@
             android:layout_marginTop="@dimen/unit8dp"
             android:hint="@string/soyadinizi_giriniz" />
 
-        <!--button for pick a birthday-->
         <Button
             android:id="@+id/buttonBirthday"
-            style="@style/button"
+            style="@style/Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextFormSurname"
             android:text="@string/dogum_gunu_tarihinizi_seciniz" />
 
-        <!--text view for show birthday-->
         <TextView
             android:id="@+id/textViewBirthday"
             android:layout_width="wrap_content"
@@ -52,7 +50,6 @@
             android:textColor="@color/black"
             android:textSize="@dimen/unit20sp" />
 
-        <!--image view for taking photo-->
         <ImageView
             android:id="@+id/imageViewProfilePhoto"
             android:layout_width="@dimen/unit100dp"
@@ -63,7 +60,6 @@
             android:layout_marginTop="@dimen/unit8dp"
             android:src="@drawable/ic_person" />
 
-        <!-- null account for custom account-->
         <com.example.sampleapplicationproject.widgets.CustomAccountWidget
             android:id="@+id/customAccountView"
             android:layout_width="match_parent"
