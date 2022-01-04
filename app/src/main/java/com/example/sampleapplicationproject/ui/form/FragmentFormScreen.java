@@ -39,10 +39,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.sampleapplicationproject.FormScreenData;
 import com.example.sampleapplicationproject.FragmentConfirmScreen;
-import com.example.sampleapplicationproject.FragmentContract;
-import com.example.sampleapplicationproject.PhoneNumberEditText;
+import com.example.sampleapplicationproject.widgets.PhoneNumberEditText;
 import com.example.sampleapplicationproject.R;
 import com.example.sampleapplicationproject.models.CustomAccountModel;
 import com.example.sampleapplicationproject.ui.BaseFragment;

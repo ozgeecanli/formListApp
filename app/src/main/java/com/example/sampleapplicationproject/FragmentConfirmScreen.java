@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.sampleapplicationproject.models.OnePersonAllInfoModel;
 import com.example.sampleapplicationproject.ui.BaseFragment;
+import com.example.sampleapplicationproject.ui.form.FormScreenData;
 import com.example.sampleapplicationproject.ui.form.FragmentFormScreen;
 import com.example.sampleapplicationproject.widgets.CustomAccountWidget;
 import com.google.gson.Gson;

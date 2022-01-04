@@ -11,4 +11,5 @@
     <color name="custom_account_widget">#B7E4E0</color>
     <color name="fragment_home">#2B8A7F</color>
     <color name="custom_account_selection_widget">#B7E4E0</color>
+    <color name="light_purple">#FFD5CFE1</color>
 </resources>

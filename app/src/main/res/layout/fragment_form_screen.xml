@@ -9,16 +9,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/unit16dp"
+        android:layout_marginTop="@dimen/unit8dp"
+        android:layout_marginEnd="@dimen/unit16dp">
 
         <EditText
             android:id="@+id/editTextFormName"
             style="@style/InputView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/unit8dp"
             android:layout_marginTop="@dimen/unit8dp"
-            android:layout_marginEnd="@dimen/unit8dp"
             android:hint="@string/adinizi_giriniz" />
 
         <EditText
@@ -27,124 +28,177 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextFormName"
-            android:layout_marginStart="@dimen/unit8dp"
             android:layout_marginTop="@dimen/unit8dp"
             android:hint="@string/soyadinizi_giriniz" />
 
         <Button
             android:id="@+id/buttonBirthday"
-            style="@style/Button"
+            style="@style/FormScreenButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextFormSurname"
+            android:layout_marginTop="@dimen/unit8dp"
             android:text="@string/dogum_gunu_tarihinizi_seciniz" />
 
         <TextView
             android:id="@+id/textViewBirthday"
-            android:layout_width="wrap_content"
+            style="@style/InputView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/buttonBirthday"
-            android:layout_marginStart="@dimen/unit8dp"
             android:layout_marginTop="@dimen/unit8dp"
-            android:hint="@string/dogum_gunu_tarihiniz"
-            android:textColor="@color/black"
-            android:textSize="@dimen/unit20sp" />
+            android:hint="@string/dogum_gunu_tarihiniz" />
+
+        <TextView
+            android:id="@+id/textViewTakePhoto"
+            style="@style/QuestionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewBirthday"
+            android:layout_marginTop="@dimen/unit8dp"
+            android:text="@string/asagidaki_ikona_tiklayarak_profil_fotografinizi_seciniz" />
 
         <ImageView
             android:id="@+id/imageViewProfilePhoto"
-            android:layout_width="@dimen/unit100dp"
-            android:layout_height="@dimen/unit100dp"
-            android:layout_below="@+id/textViewBirthday"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/textViewTakePhoto"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="@dimen/unit8dp"
-            android:layout_marginTop="@dimen/unit8dp"
             android:src="@drawable/ic_person" />
+
+        <TextView
+            android:id="@+id/textViewTakeAccount"
+            style="@style/QuestionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageViewProfilePhoto"
+            android:text="@string/asagidaki_kutucuktan_islem_yapmak_istediginiz_hesabi_seciniz" />
 
         <com.example.sampleapplicationproject.widgets.CustomAccountWidget
             android:id="@+id/customAccountView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imageViewProfilePhoto"
-            android:layout_marginStart="@dimen/unit8dp"
-            android:layout_marginTop="@dimen/unit8dp"
-            android:background="@color/custom_account_widget" />
+            android:layout_below="@id/textViewTakeAccount"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_input_view" />
 
-        <com.example.sampleapplicationproject.PhoneNumberEditText
-            android:id="@+id/phoneNumberEditText"
+        <TextView
+            android:id="@+id/textViewTakePhoneNumber"
+            style="@style/QuestionView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/customAccountView"
+            android:layout_below="@id/customAccountView"
+            android:layout_marginTop="@dimen/unit8dp"
+            android:text="@string/telefon_numaranizi_giriniz" />
+
+        <com.example.sampleapplicationproject.widgets.PhoneNumberEditText
+            android:id="@+id/phoneNumberEditText"
+            style="@style/InputView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTakePhoneNumber"
+            android:layout_marginTop="@dimen/unit8dp"
             app:editTextHint="0 (xxx) xxx xx xx" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        <TextView
+            android:id="@+id/textViewTakeGender"
+            style="@style/QuestionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phoneNumberEditText"
+            android:layout_marginTop="@dimen/unit8dp"
+            android:text="@string/cinsiyetinizi_seciniz" />
+
+        <RadioGroup
             android:id="@+id/radioButtonGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/phoneNumberEditText"
-            android:orientation="vertical">
+            android:layout_below="@+id/textViewTakeGender"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/radioButtonFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/kadin" />
+                android:text="@string/kadin"
+                android:textSize="@dimen/unit18sp" />
 
             <RadioButton
                 android:id="@+id/radioButtonMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/erkek" />
+                android:layout_marginStart="@dimen/unit16dp"
+                android:gravity="center"
+                android:text="@string/erkek"
+                android:textSize="@dimen/unit18sp" />
         </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewTakeCheckAccount"
+            style="@style/QuestionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radioButtonGender"
+            android:text="@string/hesap_seciniz" />
 
         <CheckBox
             android:id="@+id/checkBoxAccount1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/radioButtonGender"
-            android:text="@string/vadeli_hesap" />
+            android:layout_below="@+id/textViewTakeCheckAccount"
+            android:text="@string/vadeli_hesap"
+            android:textSize="@dimen/unit18sp" />
 
         <CheckBox
             android:id="@+id/checkBoxAccount2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBoxAccount1"
-            android:text="@string/vadesiz_hesap" />
+            android:text="@string/vadesiz_hesap"
+            android:textSize="@dimen/unit18sp" />
 
         <CheckBox
             android:id="@+id/checkBoxAccount3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBoxAccount2"
-            android:text="@string/altin_hesap" />
+            android:text="@string/altin_hesap"
+            android:textSize="@dimen/unit18sp" />
 
         <CheckBox
             android:id="@+id/checkBoxAccount4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBoxAccount3"
-            android:text="@string/doviz_hesap" />
+            android:text="@string/doviz_hesap"
+            android:textSize="@dimen/unit18sp" />
 
         <CheckBox
             android:id="@+id/checkBoxAccount5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBoxAccount4"
-            android:text="@string/portfoy_hesap" />
+            android:text="@string/portfoy_hesap"
+            android:textSize="@dimen/unit18sp" />
 
         <TextView
             android:id="@+id/textViewContract"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBoxAccount5"
+            android:layout_marginTop="@dimen/unit8dp"
             android:text="@string/sozlesmeyi_okudum_ve_onayliyorum"
             android:textSize="@dimen/unit20sp" />
 
         <Button
             android:id="@+id/buttonContinue"
+            style="@style/FormScreenButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewContract"
-            android:text="Devam et" />
+            android:layout_marginTop="@dimen/unit8dp"
+            android:layout_marginBottom="@dimen/unit30dp"
+            android:text="@string/devam_et" />
 
         <TextView
             android:id="@+id/textViewAccountTypeKeep"

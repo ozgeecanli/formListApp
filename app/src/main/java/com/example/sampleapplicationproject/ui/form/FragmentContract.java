@@ -1,4 +1,4 @@
-package com.example.sampleapplicationproject;
+package com.example.sampleapplicationproject.ui.form;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.sampleapplicationproject.R;
 import com.example.sampleapplicationproject.ui.BaseFragment;
 import com.example.sampleapplicationproject.ui.form.FragmentFormScreen;
 import com.github.barteksc.pdfviewer.PDFView;

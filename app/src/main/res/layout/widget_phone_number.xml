@@ -3,15 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:orientation="horizontal"
-    android:padding="@dimen/unit10dp">
+    android:orientation="horizontal">
 
     <EditText
         android:id="@+id/editTextPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/unit16dp"
-        android:layout_marginEnd="@dimen/unit16dp"
         android:inputType="phone"
         android:maxLength="17"/>
 

@@ -42,4 +42,10 @@
     <string name="cinsiyetiniz_iki_nokta">Cinsiyetiniz:</string>
     <string name="telefon_numaraniz_iki_nokta">Telefon Numaranız:</string>
     <string name="hesap_seciminiz_iki_nokta">Hesap seçiminiz:</string>
+    <string name="asagidaki_ikona_tiklayarak_profil_fotografinizi_seciniz">Aşağıdaki ikona tıklayarak profil fotoğrafınızı seçiniz:</string>
+    <string name="asagidaki_kutucuktan_islem_yapmak_istediginiz_hesabi_seciniz">Aşağıdaki kutucuktan işlem yapmak istediğiniz hesabı seçiniz:</string>
+    <string name="telefon_numaranizi_giriniz">Telefon Numaranızı Giriniz:</string>
+    <string name="cinsiyetinizi_seciniz">Cinsiyetinizi Seçiniz:</string>
+    <string name="hesap_seciniz">Hesap Seçiniz:</string>
+    <string name="devam_et">Devam et</string>
 </resources>

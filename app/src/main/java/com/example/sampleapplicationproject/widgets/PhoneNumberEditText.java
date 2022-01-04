@@ -1,4 +1,4 @@
-package com.example.sampleapplicationproject;
+package com.example.sampleapplicationproject.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
+
+import com.example.sampleapplicationproject.R;
 
 public class PhoneNumberEditText extends LinearLayout {
 
