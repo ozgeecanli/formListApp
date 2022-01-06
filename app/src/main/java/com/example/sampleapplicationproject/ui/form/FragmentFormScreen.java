@@ -4,6 +4,7 @@ import static android.app.Activity.RESULT_OK;
 import static com.example.sampleapplicationproject.ui.form.FragmentCustomAccountList.SELECTED_ACCOUNT;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -40,11 +41,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.sampleapplicationproject.FragmentConfirmScreen;
-import com.example.sampleapplicationproject.widgets.PhoneNumberEditText;
 import com.example.sampleapplicationproject.R;
 import com.example.sampleapplicationproject.models.CustomAccountModel;
 import com.example.sampleapplicationproject.ui.BaseFragment;
 import com.example.sampleapplicationproject.widgets.CustomAccountWidget;
+import com.example.sampleapplicationproject.widgets.PhoneNumberEditText;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -106,8 +107,18 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     String encodedImage;
     private String imageEncodedTemp;
 
+    @SuppressLint("ResourceAsColor")
     @OnClick(R.id.buttonContinue)
     public void onClickButtonContinue() {
+
+        if (editTextFormNameEdit.getText().toString().equals("") &&
+                editTextFormSurnameEdit.getText().toString().equals("")) {
+            editTextFormNameEdit.setHint("Lütfen adınızı giriniz");
+            editTextFormNameEdit.setHintTextColor(getResources().getColor(R.color.red));
+            editTextFormSurnameEdit.setHint("Lütfen soyadınızı giriniz");
+            editTextFormSurnameEdit.setHintTextColor(getResources().getColor(R.color.red));
+            return;
+        }
 
         Fragment fragmentConfirm = new FragmentConfirmScreen();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -245,22 +256,22 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         super.onResume();
         Bundle bundle = this.getArguments();
 
-        if (bundle != null && bundle.getInt("confirmContract")==0) {
+        if (bundle != null && bundle.getInt("confirmContract") == 0) {
             CustomAccountModel selectedAccount = (CustomAccountModel) bundle.getSerializable(SELECTED_ACCOUNT);
             customAccountView.setAccount(selectedAccount);
         }
 
-        if(bundle != null){
+        if (bundle != null) {
             editTextFormNameEdit.setText(FormScreenData.name);
             editTextFormSurnameEdit.setText(FormScreenData.surname);
             textViewBirthdayEdit.setText(FormScreenData.birthday);
 
-            if (FormScreenData.photo !=null) {
+            if (FormScreenData.photo != null) {
                 imageEncodedTemp = FormScreenData.photo;
                 byte[] decodedString = Base64.decode(imageEncodedTemp, Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                 imageViewProfilePhotoEdit.setImageBitmap(decodedByte);
-                encodedImage=FormScreenData.photo;
+                encodedImage = FormScreenData.photo;
             }
 
             phoneNumberEditText.setText(FormScreenData.phoneNumber);
@@ -294,8 +305,6 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
                 customAccountView.setAccount(FormScreenData.customAccountModel);
             }*/
         }
-
-
     }
 
     @Override
