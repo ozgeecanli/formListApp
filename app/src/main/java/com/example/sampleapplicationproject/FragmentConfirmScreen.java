@@ -101,9 +101,13 @@ public class FragmentConfirmScreen extends BaseFragment {
         textViewConfirmSurnameEdit.setText(surname);
         textViewConfirmBirthdayEdit.setText(birthday);
 
-        byte[] decodedString = Base64.decode(photo, Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        imageViewConfirmPhotoEdit.setImageBitmap(decodedByte);
+        if (photo != null) {
+            byte[] decodedString = Base64.decode(photo, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            imageViewConfirmPhotoEdit.setImageBitmap(decodedByte);
+        } else {
+            imageViewConfirmPhotoEdit.setVisibility(View.GONE);
+        }
 
         textViewConfirmPhoneNumberEdit.setText(phoneNumber);
 
@@ -114,11 +118,8 @@ public class FragmentConfirmScreen extends BaseFragment {
             textViewConfirmGenderEdit.setText("Erkek");
         }
 
-
         textViewConfirmAccountEdit.setText(accountType);
         customAccountView.setAccount(FormScreenData.customAccountModel);
-
-
     }
 
     public void insertItem(String name, String surname, String birthday, String photo,
