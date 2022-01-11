@@ -40,6 +40,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.sampleapplicationproject.BundleKeys;
 import com.example.sampleapplicationproject.FragmentConfirmScreen;
 import com.example.sampleapplicationproject.R;
 import com.example.sampleapplicationproject.models.CustomAccountModel;
@@ -89,23 +90,32 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     CheckBox checkBoxAccount5;
     @BindView(R.id.phoneNumberEditText)
     PhoneNumberEditText phoneNumberEditText;
-    @BindView(R.id.textViewContract)
-    TextView textViewContract;
+    @BindView(R.id.checkboxContract)
+    CheckBox checkboxContract;
     @BindView(R.id.buttonContinue)
     Button buttonContinue;
     @BindView(R.id.textViewAccountTypeKeep)
     TextView textViewAccountTypeKeep;
 
+
     String ContractText = "Sözleşmeyi okudum ve onaylıyorum.";
-    boolean checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
     int genderValue = -1;
-    ArrayList<String> arrayListCheckBox;
     Uri uri;
     private static final int preqCode = 1;
     private static final int requestCode = 1;
     String imageStringUri = "";
     String encodedImage;
     private String imageEncodedTemp;
+
+    public static final String SCREEN_BUNDLE_KEY = "SCREEN_BUNDLE_KEY";
+
+    @OnClick(R.id.layoutContract)
+    public void onClickCheckboxLayout() {
+        FragmentContract fragmentContract = new FragmentContract();
+        getActivity().getSupportFragmentManager().beginTransaction().
+                replace(R.id.fragment_container, fragmentContract, null).
+                addToBackStack(null).commit();
+    }
 
     @SuppressLint("ResourceAsColor")
     @OnClick(R.id.buttonContinue)
@@ -135,65 +145,18 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         }
 
         Fragment fragmentConfirm = new FragmentConfirmScreen();
+
+        Bundle bundle = new Bundle();
+        bundle.putString(BundleKeys.NAME_BUNDLE_KEY, editTextFormNameEdit.getText().toString());
+        bundle.putString(BundleKeys.SURNAME_BUNDLE_KEY, editTextFormSurnameEdit.getText().toString());
+        bundle.putString(BundleKeys.BIRTHDAY_BUNDLE_KEY, textViewBirthdayEdit.getText().toString());
+        bundle.putSerializable(BundleKeys.ACCOUNT_BUNDLE_KEY, customAccountView.getSelectedAccount());
+        fragmentConfirm.setArguments(bundle);
+
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragmentConfirm);
         transaction.addToBackStack(null);
         transaction.commit();
-    }
-
-    @OnClick(R.id.checkBoxAccount1)
-    public void checkBoxAccount1OnClick() {
-        if (checkBoxAccount1.isChecked()) {
-            arrayListCheckBox.add(checkBoxAccount1.getText().toString());
-            checkBox1 = true;
-        } else {
-            arrayListCheckBox.remove(checkBoxAccount1.getText().toString());
-            checkBox1 = false;
-        }
-    }
-
-    @OnClick(R.id.checkBoxAccount2)
-    public void checkBoxAccount2OnClick() {
-        if (checkBoxAccount2.isChecked()) {
-            arrayListCheckBox.add(checkBoxAccount2.getText().toString());
-            checkBox2 = true;
-        } else {
-            arrayListCheckBox.remove(checkBoxAccount2.getText().toString());
-            checkBox2 = false;
-        }
-    }
-
-    @OnClick(R.id.checkBoxAccount3)
-    public void checkBoxAccount3OnClick() {
-        if (checkBoxAccount3.isChecked()) {
-            arrayListCheckBox.add(checkBoxAccount3.getText().toString());
-            checkBox3 = true;
-        } else {
-            arrayListCheckBox.remove(checkBoxAccount3.getText().toString());
-            checkBox3 = false;
-        }
-    }
-
-    @OnClick(R.id.checkBoxAccount4)
-    public void checkBoxAccount4OnClick() {
-        if (checkBoxAccount4.isChecked()) {
-            arrayListCheckBox.add(checkBoxAccount4.getText().toString());
-            checkBox4 = true;
-        } else {
-            arrayListCheckBox.remove(checkBoxAccount4.getText().toString());
-            checkBox4 = false;
-        }
-    }
-
-    @OnClick(R.id.checkBoxAccount5)
-    public void checkBoxAccount5OnClick() {
-        if (checkBoxAccount5.isChecked()) {
-            arrayListCheckBox.add(checkBoxAccount5.getText().toString());
-            checkBox5 = true;
-        } else {
-            arrayListCheckBox.remove(checkBoxAccount5.getText().toString());
-            checkBox5 = false;
-        }
     }
 
     @OnClick(R.id.imageViewProfilePhoto)
@@ -213,11 +176,6 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         showDataPickerDialog();
     }
 
-    @OnClick(R.id.textViewContract)
-    public void onClickTextViewContract() {
-        contractClickable();
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -233,9 +191,6 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        //create arraylist for check account
-        arrayListCheckBox = new ArrayList<>();
 
         //click widget custom account
         customAccountView.setOnClickListener(new View.OnClickListener() {
@@ -270,24 +225,26 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         super.onResume();
 
         Bundle bundle = this.getArguments();
-        /*
-        //returns account selected from custom account list to fragment form screen
-        if (bundle != null && bundle.getInt("confirmContract") == 0) {
-            CustomAccountModel selectedAccount = (CustomAccountModel) bundle.getSerializable(SELECTED_ACCOUNT);
-            customAccountView.setAccount(selectedAccount);
-        }
-         */
+
         if (bundle != null) {
+
             editTextFormNameEdit.setText(FormScreenData.name);
             editTextFormSurnameEdit.setText(FormScreenData.surname);
             textViewBirthdayEdit.setText(FormScreenData.birthday);
+            phoneNumberEditText.setText(FormScreenData.phoneNumber);
+            genderValue = FormScreenData.gender;
 
-            if (bundle != null && bundle.getInt("confirmContract") == 0) {
-                CustomAccountModel selectedAccount = (CustomAccountModel) bundle.getSerializable(SELECTED_ACCOUNT);
-                customAccountView.setAccount(selectedAccount);
-            } else if (FormScreenData.customAccountModel != null) {
-                customAccountView.setAccount(FormScreenData.customAccountModel);
+            if (genderValue == 0) {
+                radioGroupFemale.setChecked(true);
+            } else if (genderValue == 1) {
+                radioButtonMale.setChecked(false);
             }
+
+            checkBoxAccount1.setChecked(FormScreenData.checkBox1);
+            checkBoxAccount2.setChecked(FormScreenData.checkBox2);
+            checkBoxAccount3.setChecked(FormScreenData.checkBox3);
+            checkBoxAccount4.setChecked(FormScreenData.checkBox4);
+            checkBoxAccount5.setChecked(FormScreenData.checkBox5);
 
             if (FormScreenData.photo != null) {
                 imageEncodedTemp = FormScreenData.photo;
@@ -297,32 +254,16 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
                 encodedImage = FormScreenData.photo;
             }
 
-            phoneNumberEditText.setText(FormScreenData.phoneNumber);
-            genderValue = FormScreenData.gender;
-            if (genderValue == 0) {
-                radioGroupFemale.setChecked(true);
-            } else if (genderValue == 1) {
-                radioButtonMale.setChecked(false);
-            }
-            if (FormScreenData.checkBox1) {
-                checkBoxAccount1.setChecked(true);
-                checkBoxAccount1OnClick();
-            }
-            if (FormScreenData.checkBox2) {
-                checkBoxAccount2.setChecked(true);
-                checkBoxAccount2OnClick();
-            }
-            if (FormScreenData.checkBox3) {
-                checkBoxAccount3.setChecked(true);
-                checkBoxAccount3OnClick();
-            }
-            if (FormScreenData.checkBox4) {
-                checkBoxAccount4.setChecked(true);
-                checkBoxAccount4OnClick();
-            }
-            if (FormScreenData.checkBox5) {
-                checkBoxAccount5.setChecked(true);
-                checkBoxAccount5OnClick();
+            if (bundle.getInt(SCREEN_BUNDLE_KEY) == Page.ACCOUNT_LIST.getPageID()) {
+                CustomAccountModel selectedAccount = (CustomAccountModel) bundle.getSerializable(SELECTED_ACCOUNT);
+                customAccountView.setAccount(selectedAccount);
+            } else if (bundle.getInt(SCREEN_BUNDLE_KEY) == Page.CONTRACTS.getPageID()) {
+
+                if (FormScreenData.customAccountModel != null) {
+                    customAccountView.setAccount(FormScreenData.customAccountModel);
+                }
+
+                checkboxContract.setChecked(bundle.getBoolean(FragmentContract.CONTRACT_IS_CHECKED_BUNDLE_KEY, false));
             }
         }
     }
@@ -337,29 +278,12 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         FormScreenData.photo = encodedImage;
         FormScreenData.phoneNumber = phoneNumberEditText.getText().toString();
         FormScreenData.gender = genderValue;
-        FormScreenData.checkBox1 = checkBox1;
-        FormScreenData.checkBox2 = checkBox2;
-        FormScreenData.checkBox3 = checkBox3;
-        FormScreenData.checkBox4 = checkBox4;
-        FormScreenData.checkBox5 = checkBox5;
-        // FormScreenData.customAccountModel bos geliyor
+        FormScreenData.checkBox1 = checkBoxAccount1.isChecked();
+        FormScreenData.checkBox2 = checkBoxAccount2.isChecked();
+        FormScreenData.checkBox3 = checkBoxAccount3.isChecked();
+        FormScreenData.checkBox4 = checkBoxAccount4.isChecked();
+        FormScreenData.checkBox5 = checkBoxAccount5.isChecked();
         FormScreenData.customAccountModel = customAccountView.getSelectedAccount();
-    }
-
-    //profile photo
-    private void checkAndRequestForPermission() {
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                Toast.makeText(getContext(), "Lütfen uygulama ayarlarından gerekli izinleri açınız", Toast.LENGTH_LONG).show();
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, preqCode);
-            } else {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, preqCode);
-            }
-        } else {
-            Intent intentImage = new Intent(Intent.ACTION_GET_CONTENT);
-            intentImage.setType("image/*");
-            startActivityForResult(intentImage, requestCode);
-        }
     }
 
     @Override
@@ -412,37 +336,30 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         textViewBirthdayEdit.setText(date);
     }
 
-    //contract
-    public void contractClickable() {
-        SpannableString spannableString = new SpannableString(ContractText);
-        ClickableSpan clickableSpan = new ClickableSpan() {
-
-            @Override
-            public void onClick(View widget) {
-                FragmentContract fragmentContract = new FragmentContract();
-                getActivity().getSupportFragmentManager().beginTransaction().
-                        replace(R.id.fragment_container, fragmentContract, null).
-                        addToBackStack(null).commit();
-            }
-
-            @Override
-            public void updateDrawState(TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setColor(Color.BLUE);
-                ds.setUnderlineText(false);
-            }
-        };
-        spannableString.setSpan(clickableSpan, 0, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        textViewContract.setText(spannableString);
-        textViewContract.setMovementMethod(LinkMovementMethod.getInstance());
-    }
-
     public void checkBoxKeep() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (String string : arrayListCheckBox) {
-            stringBuilder.append(string).append("-");
-            textViewAccountTypeKeep.setText(stringBuilder.toString());
+
+        if (checkBoxAccount1.isChecked()) {
+            stringBuilder.append(checkBoxAccount1.getText()).append("-");
         }
+
+        if (checkBoxAccount2.isChecked()) {
+            stringBuilder.append(checkBoxAccount2.getText()).append("-");
+        }
+
+        if (checkBoxAccount3.isChecked()) {
+            stringBuilder.append(checkBoxAccount3.getText()).append("-");
+        }
+
+        if (checkBoxAccount4.isChecked()) {
+            stringBuilder.append(checkBoxAccount4.getText()).append("-");
+        }
+
+        if (checkBoxAccount5.isChecked()) {
+            stringBuilder.append(checkBoxAccount5.getText()).append("-");
+        }
+
+        textViewAccountTypeKeep.setText(stringBuilder.toString());
         FormScreenData.accountType = textViewAccountTypeKeep.getText().toString();
     }
 }

@@ -34,6 +34,7 @@
     <string name="portfoy_hesap">Portföy Hesap</string>
     <string name="sozlesmeyi_okudum_ve_onayliyorum">Sözleşmeyi okudum ve onaylıyorum</string>
     <string name="onayliyorum">Onaylıyorum</string>
+    <string name="not_confirmed">Onaylamıyorum</string>
     <string name="ad_ve_soyad">Ad ve soyad</string>
     <string name="soyadiniz_iki_nokta">Soyadınız:</string>
     <string name="dogum_gunu_tarihiniz_iki_nokta">Doğum günü tarihiniz:</string>

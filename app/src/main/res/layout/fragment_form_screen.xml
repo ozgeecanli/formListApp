@@ -84,7 +84,7 @@
 
         <TextView
             android:id="@+id/textViewTakePhoneNumber"
-            style="@style/QuestionView"
+            style="@style/InputTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/customAccountView"
@@ -181,21 +181,29 @@
             android:text="@string/portfoy_hesap"
             android:textSize="@dimen/unit18sp" />
 
-        <TextView
-            android:id="@+id/textViewContract"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/layoutContract"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBoxAccount5"
-            android:layout_marginTop="@dimen/unit8dp"
-            android:text="@string/sozlesmeyi_okudum_ve_onayliyorum"
-            android:textSize="@dimen/unit20sp" />
+            android:layout_marginTop="@dimen/unit8dp">
+
+            <CheckBox
+                android:id="@+id/checkboxContract"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:text="@string/sozlesmeyi_okudum_ve_onayliyorum"/>
+
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/buttonContinue"
             style="@style/FormScreenButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewContract"
+            android:layout_below="@+id/layoutContract"
             android:layout_marginTop="@dimen/unit8dp"
             android:layout_marginBottom="@dimen/unit30dp"
             android:text="@string/devam_et" />

@@ -10,7 +10,16 @@
         android:id="@+id/contractPdfView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/buttonConfirm" />
+        android:layout_above="@+id/buttonCancel" />
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/not_confirmed"
+        android:layout_above="@+id/buttonConfirm"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <Button
         android:id="@+id/buttonConfirm"

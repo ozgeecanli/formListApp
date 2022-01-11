@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.sampleapplicationproject.R;
 import com.example.sampleapplicationproject.ui.BaseFragment;
-import com.example.sampleapplicationproject.ui.form.FragmentFormScreen;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnPageScrollListener;
 
@@ -20,15 +19,35 @@ import butterknife.OnClick;
 
 public class FragmentContract extends BaseFragment implements OnPageScrollListener {
 
+    public static final String CONTRACT_IS_CHECKED_BUNDLE_KEY = "CONTRACT_IS_CHECKED_BUNDLE_KEY";
+
     @BindView(R.id.contractPdfView)
     PDFView contractPdfView;
+
     @BindView(R.id.buttonConfirm)
     Button buttonConfirm;
+
+    @BindView(R.id.buttonCancel)
+    Button buttonCancel;
+
+    @OnClick(R.id.buttonCancel)
+    public void cancelButtonClick() {
+        Bundle bundle = new Bundle();
+        bundle.putInt(FragmentFormScreen.SCREEN_BUNDLE_KEY, Page.CONTRACTS.getPageID());
+        bundle.putBoolean(CONTRACT_IS_CHECKED_BUNDLE_KEY, false);
+
+        Fragment fragment = new FragmentFormScreen();
+        fragment.setArguments(bundle);
+
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                fragment).commit();
+    }
 
     @OnClick(R.id.buttonConfirm)
     public void confirmButtonClick() {
         Bundle bundle = new Bundle();
-        bundle.putInt("confirmContract", 1);
+        bundle.putInt(FragmentFormScreen.SCREEN_BUNDLE_KEY, Page.CONTRACTS.getPageID());
+        bundle.putBoolean(CONTRACT_IS_CHECKED_BUNDLE_KEY, true);
 
         Fragment fragment = new FragmentFormScreen();
         fragment.setArguments(bundle);
@@ -55,6 +74,10 @@ public class FragmentContract extends BaseFragment implements OnPageScrollListen
         buttonConfirm.setVisibility(View.VISIBLE);
         buttonConfirm.setEnabled(false);
         buttonConfirm.setAlpha(.5f);
+
+        buttonCancel.setVisibility(View.VISIBLE);
+        buttonCancel.setEnabled(false);
+        buttonCancel.setAlpha(.5f);
     }
 
     @Override
@@ -65,10 +88,20 @@ public class FragmentContract extends BaseFragment implements OnPageScrollListen
                     buttonConfirm.setEnabled(true);
                     buttonConfirm.setAlpha(1f);
                 }
+
+                if (buttonCancel != null) {
+                    buttonCancel.setEnabled(true);
+                    buttonCancel.setAlpha(1f);
+                }
             } else if (contractPdfView.getPageCount() - 1 == 0) {
                 if (buttonConfirm != null) {
                     buttonConfirm.setEnabled(true);
                     buttonConfirm.setAlpha(1f);
+                }
+
+                if (buttonCancel != null) {
+                    buttonCancel.setEnabled(true);
+                    buttonCancel.setAlpha(1f);
                 }
             }
         }
