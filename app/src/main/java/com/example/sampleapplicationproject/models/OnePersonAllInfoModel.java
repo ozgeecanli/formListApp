@@ -9,7 +9,8 @@ public class OnePersonAllInfoModel {
     int gender;
     String accountType;
 
-    public OnePersonAllInfoModel(String name, String surname, String birthday, String photo, String phoneNumber, int gender, String accountType) {
+    public OnePersonAllInfoModel(String name, String surname, String birthday, String photo,
+                                 String phoneNumber, int gender, String accountType) {
         this.name = name;
         this.surname = surname;
         this.birthday = birthday;

@@ -42,6 +42,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.sampleapplicationproject.FragmentConfirmScreen;
 import com.example.sampleapplicationproject.R;
+import com.example.sampleapplicationproject.models.ContractConfirmModel;
 import com.example.sampleapplicationproject.models.CustomAccountModel;
 import com.example.sampleapplicationproject.ui.BaseFragment;
 import com.example.sampleapplicationproject.widgets.CustomAccountWidget;
@@ -107,6 +108,8 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
     String encodedImage;
     private String imageEncodedTemp;
 
+    ContractConfirmModel confirmModel;
+
     @SuppressLint("ResourceAsColor")
     @OnClick(R.id.buttonContinue)
     public void onClickButtonContinue() {
@@ -130,7 +133,13 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
             textViewBirthdayEdit.setHintTextColor(getResources().getColor(R.color.red));
         }
 
-        if(!isValid){
+        if (!isValid) {
+            return;
+        }
+
+        if (!confirmModel.isConfirmedContract()) {
+            Toast.makeText(getContext(), "Lütfen sözleşmeyi onaylayınız", Toast.LENGTH_SHORT)
+                    .show();
             return;
         }
 
@@ -270,19 +279,13 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         super.onResume();
 
         Bundle bundle = this.getArguments();
-        /*
-        //returns account selected from custom account list to fragment form screen
-        if (bundle != null && bundle.getInt("confirmContract") == 0) {
-            CustomAccountModel selectedAccount = (CustomAccountModel) bundle.getSerializable(SELECTED_ACCOUNT);
-            customAccountView.setAccount(selectedAccount);
-        }
-         */
+
         if (bundle != null) {
             editTextFormNameEdit.setText(FormScreenData.name);
             editTextFormSurnameEdit.setText(FormScreenData.surname);
             textViewBirthdayEdit.setText(FormScreenData.birthday);
 
-            if (bundle != null && bundle.getInt("confirmContract") == 0) {
+            if (bundle.getInt("confirmContract") == 0) {
                 CustomAccountModel selectedAccount = (CustomAccountModel) bundle.getSerializable(SELECTED_ACCOUNT);
                 customAccountView.setAccount(selectedAccount);
             } else if (FormScreenData.customAccountModel != null) {
@@ -324,6 +327,8 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
                 checkBoxAccount5.setChecked(true);
                 checkBoxAccount5OnClick();
             }
+
+            confirmModel = (ContractConfirmModel) bundle.getSerializable("confirmedContract");
         }
     }
 
@@ -342,7 +347,6 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
         FormScreenData.checkBox3 = checkBox3;
         FormScreenData.checkBox4 = checkBox4;
         FormScreenData.checkBox5 = checkBox5;
-        // FormScreenData.customAccountModel bos geliyor
         FormScreenData.customAccountModel = customAccountView.getSelectedAccount();
     }
 

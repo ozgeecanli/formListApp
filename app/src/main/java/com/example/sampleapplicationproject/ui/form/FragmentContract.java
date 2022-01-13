@@ -9,8 +9,8 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 
 import com.example.sampleapplicationproject.R;
+import com.example.sampleapplicationproject.models.ContractConfirmModel;
 import com.example.sampleapplicationproject.ui.BaseFragment;
-import com.example.sampleapplicationproject.ui.form.FragmentFormScreen;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnPageScrollListener;
 
@@ -27,8 +27,14 @@ public class FragmentContract extends BaseFragment implements OnPageScrollListen
 
     @OnClick(R.id.buttonConfirm)
     public void confirmButtonClick() {
+
+        ContractConfirmModel confirmModel = new ContractConfirmModel();
+        confirmModel.setConfirmedContract(true);
+
         Bundle bundle = new Bundle();
         bundle.putInt("confirmContract", 1);
+        bundle.putInt("fromScreen", 2);
+        bundle.putSerializable("confirmedContract", confirmModel);
 
         Fragment fragment = new FragmentFormScreen();
         fragment.setArguments(bundle);
@@ -47,7 +53,6 @@ public class FragmentContract extends BaseFragment implements OnPageScrollListen
         contractPdfView.fromAsset("Contract.pdf").onPageScroll(this).load();
         return view;
     }
-
 
     @Override
     public void onStart() {
