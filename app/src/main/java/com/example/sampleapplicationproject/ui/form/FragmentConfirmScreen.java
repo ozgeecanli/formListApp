@@ -1,4 +1,4 @@
-package com.example.sampleapplicationproject;
+package com.example.sampleapplicationproject.ui.form;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -15,15 +15,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sampleapplicationproject.BundleKeys;
+import com.example.sampleapplicationproject.FormListScreenAdapter;
+import com.example.sampleapplicationproject.R;
+import com.example.sampleapplicationproject.models.CustomAccountModel;
 import com.example.sampleapplicationproject.models.OnePersonAllInfoModel;
 import com.example.sampleapplicationproject.ui.BaseFragment;
-import com.example.sampleapplicationproject.ui.form.FormScreenData;
-import com.example.sampleapplicationproject.ui.form.FragmentFormScreen;
 import com.example.sampleapplicationproject.widgets.CustomAccountWidget;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -59,21 +59,18 @@ public class FragmentConfirmScreen extends BaseFragment {
     int gender;
 
     @OnClick(R.id.buttonSave)
-    public void onClickbuttonSave() {
+    public void onClickButtonSave() {
         saveData();
     }
 
     @OnClick(R.id.buttonReturn)
     public void onClickButtonReturn() {
-        Bundle bundle = new Bundle();
-        bundle.putInt("backButton", 1);
+
         FragmentFormScreen fragmentFormScreen = new FragmentFormScreen();
-        fragmentFormScreen.setArguments(bundle);
         getActivity().getSupportFragmentManager().beginTransaction().
                 replace(R.id.fragment_container, fragmentFormScreen, null).
                 commit();
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,11 +84,11 @@ public class FragmentConfirmScreen extends BaseFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        loadData();
 
-        name = FormScreenData.name;
-        surname = FormScreenData.surname;
-        birthday = FormScreenData.birthday;
+        name = getArguments().getString(BundleKeys.NAME_BUNDLE_KEY);
+        surname = getArguments().getString(BundleKeys.SURNAME_BUNDLE_KEY);
+        birthday = getArguments().getString(BundleKeys.BIRTHDAY_BUNDLE_KEY);
+
         photo = FormScreenData.photo;
         phoneNumber = FormScreenData.phoneNumber;
         accountType = FormScreenData.accountType;
@@ -119,7 +116,11 @@ public class FragmentConfirmScreen extends BaseFragment {
         }
 
         textViewConfirmAccountEdit.setText(accountType);
-        customAccountView.setAccount(FormScreenData.customAccountModel);
+
+        CustomAccountModel accountModel = (CustomAccountModel) getArguments().getSerializable(BundleKeys.ACCOUNT_BUNDLE_KEY);
+        if (accountModel != null) {
+            customAccountView.setAccount(accountModel);
+        }
     }
 
     public void insertItem(String name, String surname, String birthday, String photo,
@@ -131,17 +132,6 @@ public class FragmentConfirmScreen extends BaseFragment {
                 phoneNumber, gender, accountType));
     }
 
-    private void loadData() {
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("PersonInfo", null);
-        Type type = new TypeToken<ArrayList<OnePersonAllInfoModel>>() {
-        }.getType();
-        arrayListOnePersonInfo = gson.fromJson(json, type);
-        if (arrayListOnePersonInfo == null) {
-            arrayListOnePersonInfo = new ArrayList<>();
-        }
-    }
 
     private void saveData() {
         insertItem(name, surname, birthday, photo, phoneNumber, gender, accountType);
