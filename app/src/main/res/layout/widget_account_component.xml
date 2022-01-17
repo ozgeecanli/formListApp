@@ -15,28 +15,28 @@
             android:id="@+id/textViewAccountName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hesap_adi_iki_nokta"
+            android:text="@string/account_name_double_dot"
             android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewDepartmentName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sube_adi_iki_nokta"
+            android:text="@string/branch_name_double_dot"
             android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewAccountNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hesap_no_iki_nokta"
+            android:text="@string/account_no_double_dot"
             android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bakiye_iki_nokta"
+            android:text="@string/balance_double_dot"
             android:textSize="@dimen/unit20sp" />
     </LinearLayout>
 
@@ -52,28 +52,28 @@
             android:id="@+id/textViewAccountNameRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/bilgi_yer_almamaktadir"
+            android:hint="@string/there_is_no_information"
             android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewDepartmentRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/bilgi_yer_almamaktadir"
+            android:hint="@string/there_is_no_information"
             android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewAccountNoRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/bilgi_yer_almamaktadir"
+            android:hint="@string/there_is_no_information"
             android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewBalanceRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/bilgi_yer_almamaktadir"
+            android:hint="@string/there_is_no_information"
             android:textSize="@dimen/unit20sp" />
     </LinearLayout>
 

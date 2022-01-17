@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/unit8dp"
-                android:text="@string/adiniz_iki_nokta"
+                android:text="@string/your_name_double_dot"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -51,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/unit8dp"
-                android:text="@string/soyadiniz_iki_nokta"
+                android:text="@string/surname_double_dot"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -77,7 +77,7 @@
                 android:id="@+id/textViewConfirmBirthday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dogum_gunu_tarihiniz_iki_nokta"
+                android:text="@string/your_birthday_double_dot"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -103,7 +103,7 @@
                 android:id="@+id/textViewConfirmPhoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/fotografınız"
+                android:text="@string/your_photograph"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -136,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/unit8dp"
-                android:text="@string/telefon_numaraniz_iki_nokta"
+                android:text="@string/your_phone_number_double_dot"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -162,7 +162,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/unit8dp"
-                android:text="@string/cinsiyetiniz_iki_nokta"
+                android:text="@string/your_gender_double_dot"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -188,7 +188,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/unit8dp"
-                android:text="@string/hesap_seciminiz_iki_nokta"
+                android:text="@string/your_account_selection_double_dot"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -208,7 +208,7 @@
             android:layout_below="@+id/linearLayoutAccount"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="@dimen/unit8dp"
-            android:text="@string/geri_don" />
+            android:text="@string/turn_back" />
 
         <Button
             android:id="@+id/buttonSave"

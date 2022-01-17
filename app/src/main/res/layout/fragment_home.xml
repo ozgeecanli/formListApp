@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="@string/ana_sayfa"
+        android:text="@string/home_page"
         android:textSize="@dimen/unit30dp" />
 
 </RelativeLayout>

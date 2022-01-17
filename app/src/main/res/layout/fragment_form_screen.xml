@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/unit8dp"
-            android:hint="@string/adinizi_giriniz" />
+            android:hint="@string/enter_your_name" />
 
         <EditText
             android:id="@+id/editTextFormSurname"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextFormName"
             android:layout_marginTop="@dimen/unit8dp"
-            android:hint="@string/soyadinizi_giriniz" />
+            android:hint="@string/enter_your_surname" />
 
         <Button
             android:id="@+id/buttonBirthday"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextFormSurname"
             android:layout_marginTop="@dimen/unit8dp"
-            android:text="@string/dogum_gunu_tarihinizi_seciniz" />
+            android:text="@string/pick_your_birthday" />
 
         <TextView
             android:id="@+id/textViewBirthday"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/buttonBirthday"
             android:layout_marginTop="@dimen/unit8dp"
-            android:hint="@string/dogum_gunu_tarihiniz" />
+            android:hint="@string/your_birthday" />
 
         <TextView
             android:id="@+id/textViewTakePhoto"
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewBirthday"
             android:layout_marginTop="@dimen/unit8dp"
-            android:text="@string/asagidaki_ikona_tiklayarak_profil_fotografinizi_seciniz" />
+            android:text="@string/select_your_profile_photo_by_clicking_the_icon_below" />
 
         <ImageView
             android:id="@+id/imageViewProfilePhoto"
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/imageViewProfilePhoto"
-            android:text="@string/asagidaki_kutucuktan_islem_yapmak_istediginiz_hesabi_seciniz" />
+            android:text="@string/select_the_account_you_want_to_trade_from_the_box_below" />
 
         <com.example.sampleapplicationproject.widgets.CustomAccountWidget
             android:id="@+id/customAccountView"
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/customAccountView"
             android:layout_marginTop="@dimen/unit8dp"
-            android:text="@string/telefon_numaranizi_giriniz" />
+            android:text="@string/enter_your_phone_number" />
 
         <com.example.sampleapplicationproject.widgets.PhoneNumberEditText
             android:id="@+id/phoneNumberEditText"
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/phoneNumberEditText"
             android:layout_marginTop="@dimen/unit8dp"
-            android:text="@string/cinsiyetinizi_seciniz" />
+            android:text="@string/select_your_gender" />
 
         <RadioGroup
             android:id="@+id/radioButtonGender"
@@ -120,7 +120,7 @@
                 android:id="@+id/radioButtonFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/kadin"
+                android:text="@string/female"
                 android:textSize="@dimen/unit18sp" />
 
             <RadioButton
@@ -129,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/unit16dp"
                 android:gravity="center"
-                android:text="@string/erkek"
+                android:text="@string/male"
                 android:textSize="@dimen/unit18sp" />
         </RadioGroup>
 
@@ -139,14 +139,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/radioButtonGender"
-            android:text="@string/hesap_seciniz" />
+            android:text="@string/select_account" />
 
         <CheckBox
             android:id="@+id/checkBoxAccount1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewTakeCheckAccount"
-            android:text="@string/vadeli_hesap"
+            android:text="@string/deposit_account"
             android:textSize="@dimen/unit18sp" />
 
         <CheckBox
@@ -154,7 +154,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBoxAccount1"
-            android:text="@string/vadesiz_hesap"
+            android:text="@string/checking_account"
             android:textSize="@dimen/unit18sp" />
 
         <CheckBox
@@ -162,7 +162,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBoxAccount2"
-            android:text="@string/altin_hesap"
+            android:text="@string/gold_account"
             android:textSize="@dimen/unit18sp" />
 
         <CheckBox
@@ -170,7 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBoxAccount3"
-            android:text="@string/doviz_hesap"
+            android:text="@string/currency_account"
             android:textSize="@dimen/unit18sp" />
 
         <CheckBox
@@ -178,7 +178,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBoxAccount4"
-            android:text="@string/portfoy_hesap"
+            android:text="@string/portfolio_account"
             android:textSize="@dimen/unit18sp" />
 
         <LinearLayout
@@ -193,7 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
-                android:text="@string/sozlesmeyi_okudum_ve_onayliyorum" />
+                android:text="@string/i_read_and_approve_the_contract" />
 
         </LinearLayout>
 
@@ -205,7 +205,7 @@
             android:layout_below="@+id/layoutContract"
             android:layout_marginTop="@dimen/unit8dp"
             android:layout_marginBottom="@dimen/unit30dp"
-            android:text="@string/devam_et" />
+            android:text="@string/go_ahead" />
 
         <TextView
             android:id="@+id/textViewAccountTypeKeep"

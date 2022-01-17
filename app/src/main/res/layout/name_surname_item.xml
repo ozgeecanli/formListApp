@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/unit8dp"
-            android:text="@string/ad"
+            android:text="@string/name"
             android:textColor="@color/black"
             android:textSize="@dimen/unit18sp" />
 
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewName"
             android:padding="@dimen/unit8dp"
-            android:text="@string/soyad"
+            android:text="@string/surname"
             android:textColor="@color/black" />
 
     </RelativeLayout>

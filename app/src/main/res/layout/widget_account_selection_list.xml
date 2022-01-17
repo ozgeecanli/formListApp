@@ -15,28 +15,28 @@
             android:id="@+id/textViewAccountNameList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hesap_adi_iki_nokta"
+            android:text="@string/account_name_double_dot"
             android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewDepartmentNameList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sube_adi_iki_nokta"
+            android:text="@string/branch_name_double_dot"
             android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewAccountNumberList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hesap_no_iki_nokta"
+            android:text="@string/account_no_double_dot"
             android:textSize="@dimen/unit20sp" />
 
         <TextView
             android:id="@+id/textViewBalanceList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bakiye_iki_nokta"
+            android:text="@string/balance_double_dot"
             android:textSize="@dimen/unit20sp" />
     </LinearLayout>
 
