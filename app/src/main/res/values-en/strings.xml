@@ -50,4 +50,6 @@
     <string name="select_account">Select Account</string>
     <string name="go_ahead">Go Ahead</string>
     <string name="your_photograph">Your Photograph:</string>
+    <string name="language">language</string>
+
 </resources>

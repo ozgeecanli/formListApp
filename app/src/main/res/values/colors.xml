@@ -13,4 +13,8 @@
     <color name="custom_account_selection_widget">#B7E4E0</color>
     <color name="light_purple">#FFD5CFE1</color>
     <color name="red">#FF0000</color>
+
+    <color name="colorPrimary">#0F9D58</color>
+    <color name="colorPrimaryDark">#16E37F</color>
+    <color name="colorAccent">#03DAC5</color>
 </resources>

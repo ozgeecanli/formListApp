@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fragment_home"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".ui.FragmentHome">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewLanguage"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/home_page"
+        android:text="@string/select_language"
+        android:textAlignment="center"
         android:textSize="@dimen/unit30dp" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/buttonTurkish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/unit8dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/turkish"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/buttonEnglish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/unit8dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/english"
+        android:textColor="#ffffff" />
+
+</LinearLayout>
