@@ -169,9 +169,7 @@ public class FragmentFormScreen extends BaseFragment implements DatePickerDialog
 
         View setContentView = inflater.inflate(R.layout.fragment_form_screen, container,
                 false);
-
         ButterKnife.bind(this, setContentView);
-
         return setContentView;
     }
 

@@ -26,9 +26,10 @@ public class FormListScreenAdapter extends RecyclerView.Adapter<FormListScreenAd
     ArrayList<OnePersonAllInfoModel> arrayList;
     FormListScreenItemSelectedListener formListScreenItemSelectedListener;
 
-    public interface FormListScreenItemSelectedListener{
+    public interface FormListScreenItemSelectedListener {
         void onSelected(OnePersonAllInfoModel onePersonAllInfoModel);
     }
+
     public FormListScreenAdapter(Context context, ArrayList<OnePersonAllInfoModel> arrayList, FormListScreenItemSelectedListener formListScreenItemSelectedListener) {
         this.context = context;
         this.arrayList = arrayList;

@@ -55,7 +55,7 @@ public class FragmentConfirmScreen extends BaseFragment {
 
     FormListScreenAdapter adapterFormListScreen;
     ArrayList<OnePersonAllInfoModel> arrayListOnePersonInfo;
-    String name, surname, birthday, photo, photoBase64, phoneNumber, accountType;
+    String name, surname, birthday, photo, phoneNumber, accountType;
     int gender;
 
     @OnClick(R.id.buttonSave)
@@ -109,7 +109,7 @@ public class FragmentConfirmScreen extends BaseFragment {
         textViewConfirmPhoneNumberEdit.setText(phoneNumber);
 
         if (gender == 0) {
-            textViewConfirmGenderEdit.setText("Kadın");
+            textViewConfirmGenderEdit.setText("@string/female");
 
         } else {
             textViewConfirmGenderEdit.setText("Erkek");

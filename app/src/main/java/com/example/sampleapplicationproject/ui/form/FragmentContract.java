@@ -23,10 +23,8 @@ public class FragmentContract extends BaseFragment implements OnPageScrollListen
 
     @BindView(R.id.contractPdfView)
     PDFView contractPdfView;
-
     @BindView(R.id.buttonConfirm)
     Button buttonConfirm;
-
     @BindView(R.id.buttonCancel)
     Button buttonCancel;
 
