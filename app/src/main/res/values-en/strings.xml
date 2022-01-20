@@ -51,5 +51,9 @@
     <string name="go_ahead">Go Ahead</string>
     <string name="your_photograph">Your Photograph:</string>
     <string name="language">language</string>
+    <string name="selected_language">English</string>
+    <string name="select_language">Select Language</string>
+    <string name="turkish">Turkish</string>
+    <string name="english">English</string>
 
 </resources>

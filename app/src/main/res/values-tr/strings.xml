@@ -49,10 +49,10 @@
     <string name="select_account">Hesap Seçiniz</string>
     <string name="go_ahead">Devam et</string>
     <string name="your_photograph">Fotoğrafınız:</string>
-    <string name="select_language">Dil Seçiniz</string>
+    <string name="select_language" translatable="false">Dil Seçiniz</string>
     <string name="language">Dil</string>
-    <string name="turkish">Türkçe</string>
-    <string name="english">İngilizce</string>
+    <string name="turkish" translatable="false">Türkçe</string>
+    <string name="english" translatable="false">İngilizce</string>
     <string name="selected_language">Türkçe</string>
 
     <string-array name="language_option">

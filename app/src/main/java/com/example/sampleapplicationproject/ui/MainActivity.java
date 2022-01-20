@@ -1,5 +1,9 @@
 package com.example.sampleapplicationproject.ui;
 
+import static com.example.sampleapplicationproject.LocaleHelper.LANGUAGE_CODE_EN;
+import static com.example.sampleapplicationproject.LocaleHelper.LANGUAGE_CODE_TR;
+
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -10,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.sampleapplicationproject.LocaleHelper;
 import com.example.sampleapplicationproject.R;
 import com.example.sampleapplicationproject.ui.form.FragmentFormScreen;
 import com.example.sampleapplicationproject.ui.formlist.FragmentFormListScreen;
@@ -27,6 +32,11 @@ public class MainActivity extends AppCompatActivity implements
     public DrawerLayout drawer;
     @BindView(R.id.nav_view)
     NavigationView navigationView;
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +80,20 @@ public class MainActivity extends AppCompatActivity implements
                         FragmentFormScreen()).commit();
                 toolbar.setTitle("Form Ekranı");
                 break;
+            case R.id.nav_language:
+                changeLanguage();
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void changeLanguage() {
+        if (LocaleHelper.getLanguage(MainActivity.this).equals(LANGUAGE_CODE_EN)) {
+            LocaleHelper.setLocale(MainActivity.this, LANGUAGE_CODE_TR);
+        } else {
+            LocaleHelper.setLocale(MainActivity.this, LANGUAGE_CODE_EN);
+        }
     }
 
     @Override

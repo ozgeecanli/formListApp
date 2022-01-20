@@ -43,6 +43,13 @@ public class FragmentHome extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        buttonTurkish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         buttonEnglish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,13 +59,6 @@ public class FragmentHome extends BaseFragment {
             }
         });
 
-        buttonTurkish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                context = LocaleHelper.setLocale(getContext(), "hi");
-                resources = context.getResources();
-                messageView.setText(resources.getString(R.string.language));
-            }
-        });
+
     }
 }

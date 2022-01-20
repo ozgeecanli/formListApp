@@ -17,6 +17,10 @@
             android:id="@+id/nav_form_list_screen"
             android:icon="@drawable/ic_list"
             android:title="@string/form_list_screen" />
+        <item
+            android:id="@+id/nav_language"
+            android:icon="@drawable/ic_list"
+            android:title="@string/select_language" />
 
     </group>
 
