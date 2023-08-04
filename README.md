@@ -1,17 +1,22 @@
 Form List App
+
 Form List App is an Android application that allows users to manage and view a list of forms. Users can add new forms, view existing forms, and proceed with form submission.
 
 General Requirements
+
 Android SDK Version: 21 and above.
 Butterknife library is used for view binding.
 All views have defined styles.
 The app supports scrolling on relevant screens.
 
 Features
+
 1. Home Fragment
+   
 The Home Fragment provides a navigation menu to access other developed screens. It is a simple, empty screen.
 
 2. Form List Screen
+   
 The Form List Screen is a Fragment that displays a list of forms saved on the device using a RecyclerView. Each item in the list contains the following information:
 
 Profile picture
@@ -20,6 +25,7 @@ Background based on gender
 When a list item is clicked, a Toast message shows the name and birthdate of the selected form.
 
 3. Form Screen
+   
 The Form Screen is a Fragment that allows users to fill in their information for a new form submission. The following fields are required:
 
 Toolbar with a title
